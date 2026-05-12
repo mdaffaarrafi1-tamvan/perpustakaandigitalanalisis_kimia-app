@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.title("🎈Ikan Goreng  ")
-st.header("Aplikasi Operasi Aritmatika, divider=1True)
+st.header("Aplikasi Operasi Aritmatika")
 number1 = st.number_input("masukkan angka 1")          
 number2 = st.number_input("masukkan angka 2")      
 st.button("Reset", type="primary")
