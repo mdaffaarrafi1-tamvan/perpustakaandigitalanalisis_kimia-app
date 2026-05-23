@@ -4,8 +4,7 @@ st.set_page_config(
   page_title="COMKATE",
   layout="wide"
 )
-
- Hirarki teks
+# Hirarki teks
 st.title("📊 Dashboard")
 st.header("Laporan Bulanan")
 st.subheader("📈 Monthly Expenses")
