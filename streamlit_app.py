@@ -1,85 +1,79 @@
-import streamlit as st
-import pandas as pd
-from PyPDF2 import PdfReader
-
-# ======================================================
-# KONFIGURASI HALAMAN
-# ======================================================
-st.set_page_config(
-    page_title="ChemLib Hybrid Digital",
-    page_icon="🧪",
-    layout="wide"
-)
-
-# ======================================================
-# DATABASE INTERNAL
-# ======================================================
-data_panduan = {
-    "Gravimetri": {
-        "Judul": "Penentuan Kadar Sulfat sebagai BaSO4",
-        "Prosedur": "1. Pengendapan\n2. Penyaringan\n3. Pemijaran",
-        "Ref": "Modul Praktikum"
-    }
-}
-
-# ======================================================
-# SIDEBAR
-# ======================================================
-menu = st.sidebar.selectbox(
-    "Pilih Menu",
-    ["Dashboard", "Cari MSDS"]
-)
-
-# ======================================================
-# DASHBOARD
-# ======================================================
-if menu == "Dashboard":
-
-    st.title("🧪 ChemLib Digital")
-    st.write("Perpustakaan Digital Laboratorium")
-
-# ======================================================
+# =========================================================
 # CARI MSDS
-# ======================================================
+# =========================================================
 elif menu == "Cari MSDS":
 
-    st.header("📄 Upload PDF MSDS")
+    st.header("📄 Upload dan Analisis MSDS")
+
+    st.divider()
+
+    # =====================================================
+    # UPLOAD PDF SDS
+    # =====================================================
+    st.subheader("📄 Upload File SDS / MSDS")
 
     uploaded_file = st.file_uploader(
-        "Upload file PDF",
-        type=["pdf"]
+        "Upload file PDF SDS",
+        type="pdf"
     )
 
     if uploaded_file is not None:
 
         st.success(f"File berhasil diupload: {uploaded_file.name}")
 
-        try:
+        # membaca PDF
+        pdf_reader = PdfReader(uploaded_file)
 
-            # membaca PDF
-            pdf_reader = PdfReader(uploaded_file)
+        jumlah_halaman = len(pdf_reader.pages)
 
-            jumlah_halaman = len(pdf_reader.pages)
+        st.write(f"Jumlah halaman PDF: {jumlah_halaman}")
 
-            st.write(f"Jumlah halaman: {jumlah_halaman}")
+        # mengambil teks seluruh halaman
+        all_text = ""
 
-            # ambil teks
-            all_text = ""
+        for page in pdf_reader.pages:
 
-            for page in pdf_reader.pages:
+            text = page.extract_text()
 
-                text = page.extract_text()
+            if text:
+                all_text += text
 
-                if text:
-                    all_text += text
+        # tampilkan isi PDF
+        st.subheader("📖 Isi Dokumen SDS")
 
-            # tampilkan teks
-            st.text_area(
-                "Isi PDF",
-                all_text,
-                height=400
+        st.text_area(
+            "Hasil ekstraksi teks:",
+            all_text,
+            height=400
+        )
+
+        # =================================================
+        # PENCARIAN BAHAYA OTOMATIS
+        # =================================================
+        st.subheader("⚠️ Identifikasi Bahaya")
+
+        keyword_bahaya = [
+            "berbahaya",
+            "karsinogen",
+            "iritasi",
+            "toksik",
+            "flammable",
+            "cancer"
+        ]
+
+        hasil_bahaya = []
+
+        for kata in keyword_bahaya:
+
+            if kata.lower() in all_text.lower():
+                hasil_bahaya.append(kata)
+
+        if hasil_bahaya:
+
+            st.error(
+                f"Bahan memiliki indikasi bahaya: {', '.join(hasil_bahaya)}"
             )
 
-        except Exception as e:
+        else:
 
-            st.error(f"Terjadi error: {e}")
+            st.success("Tidak ditemukan kata kunci bahaya.")
