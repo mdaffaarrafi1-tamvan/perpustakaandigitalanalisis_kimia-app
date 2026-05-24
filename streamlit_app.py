@@ -1,31 +1,67 @@
 import streamlit as st
 import pandas as pd
+from streamlit_pdf_viewer import pdf_viewer
 
-# --- KONFIGURASI HALAMAN ---
+# =========================================================
+# KONFIGURASI HALAMAN
+# =========================================================
 st.set_page_config(
     page_title="ChemLib Hybrid Digital",
     page_icon="🧪",
     layout="wide"
 )
 
-# --- DATABASE INTERNAL ---
+# =========================================================
+# DATABASE INTERNAL
+# =========================================================
 data_panduan = {
+
     "Gravimetri": {
+
         "Judul": "Penentuan Kadar Sulfat sebagai BaSO4",
-        "Prosedur": "1. Pengendapan dengan BaCl2\n2. Digesti\n3. Penyaringan\n4. Pemijaran",
+
+        "Prosedur":
+        "1. Pengendapan dengan BaCl2\n"
+        "2. Digesti\n"
+        "3. Penyaringan\n"
+        "4. Pemijaran",
+
         "Ref": "Modul Praktikum Kimia Analitik"
     },
+
     "Titrimetri": {
+
         "Judul": "Standarisasi NaOH dengan Asam Oksalat",
-        "Prosedur": "1. Pembuatan larutan baku primer\n2. Titrasi menggunakan indikator PP",
+
+        "Prosedur":
+        "1. Pembuatan larutan baku primer\n"
+        "2. Titrasi menggunakan indikator PP",
+
         "Ref": "SNI 06-6989.11-2004"
     }
 }
 
-# --- SIDEBAR ---
+# =========================================================
+# DATABASE MSDS
+# =========================================================
+daftar_msds = {
+
+    "Crystal Violet":
+    "msds/crystal_violet.pdf"
+
+    # Tambahkan file lain di sini
+    # "Asam Sulfat": "msds/asam_sulfat.pdf"
+}
+
+# =========================================================
+# SIDEBAR
+# =========================================================
 st.sidebar.title("📚 Navigasi")
+
 menu = st.sidebar.selectbox(
+
     "Pilih Menu",
+
     [
         "Dashboard",
         "Cari MSDS",
@@ -40,101 +76,74 @@ menu = st.sidebar.selectbox(
 if menu == "Dashboard":
 
     st.title("🧪 ChemLib Digital")
-    st.write("Sistem informasi laboratorium kimia berbasis hybrid.")
+
+    st.write(
+        "Sistem informasi perpustakaan digital laboratorium kimia berbasis hybrid."
+    )
 
     col1, col2 = st.columns(2)
 
     with col1:
-        st.info("📘 Data Internal Laboratorium")
+
+        st.info(
+            "📘 Menyediakan panduan praktikum internal laboratorium."
+        )
 
     with col2:
-        st.success("🌐 Integrasi Database Global")
+
+        st.success(
+            "📄 Menyediakan database MSDS yang dapat dilihat dan diunduh."
+        )
 
 # =========================================================
 # CARI MSDS
 # =========================================================
 elif menu == "Cari MSDS":
 
-    st.header("🌐 Pencarian MSDS")
+    st.header("📄 Database MSDS Laboratorium")
 
-    nama_bahan = st.text_input(
-        "Masukkan nama bahan kimia:",
-        placeholder="Contoh: Crystal Violet"
+    st.write(
+        "Pilih bahan kimia untuk melihat dokumen MSDS."
     )
 
-    if nama_bahan:
-
-        st.subheader(f"Hasil pencarian: {nama_bahan}")
-
-        # link otomatis ke PubChem
-        url_pubchem = f"https://pubchem.ncbi.nlm.nih.gov/#query={nama_bahan.replace(' ', '%20')}"
-
-        st.markdown(f"""
-        [🔗 Buka Data PubChem]({url_pubchem})
-        """)
-
-    st.divider()
-
     # =====================================================
-    # UPLOAD PDF SDS
+    # PILIH BAHAN
     # =====================================================
-    st.subheader("📄 Upload File SDS / MSDS")
+    pilihan = st.selectbox(
 
-    uploaded_file = st.file_uploader(
-        "Upload file PDF SDS",
-        type="pdf"
+        "Pilih bahan kimia:",
+
+        list(daftar_msds.keys())
     )
 
-    if uploaded_file is not None:
+    # path file
+    file_path = daftar_msds[pilihan]
 
-        st.success(f"File berhasil diupload: {uploaded_file.name}")
+    # =====================================================
+    # BUKA FILE PDF
+    # =====================================================
+    with open(file_path, "rb") as pdf_file:
 
-        # membaca PDF
-        pdf_reader = PyPDF2.PdfReader(uploaded_file)
+        PDFbyte = pdf_file.read()
 
-        jumlah_halaman = len(pdf_reader.pages)
+        st.subheader(f"📘 MSDS {pilihan}")
 
-        st.write(f"Jumlah halaman PDF: {jumlah_halaman}")
+        # tombol download
+        st.download_button(
 
-        # mengambil teks seluruh halaman
-        all_text = ""
+            label="⬇️ Download MSDS",
 
-        for page in pdf_reader.pages:
-            all_text += page.extract_text()
+            data=PDFbyte,
 
-        # tampilkan isi PDF
-        st.subheader("📖 Isi Dokumen SDS")
+            file_name=f"{pilihan}.pdf",
 
-        st.text_area(
-            "Hasil ekstraksi teks:",
-            all_text,
-            height=400
+            mime="application/pdf"
         )
 
-        # =================================================
-        # PENCARIAN BAHAYA OTOMATIS
-        # =================================================
-        st.subheader("⚠️ Identifikasi Bahaya")
+        st.divider()
 
-        keyword_bahaya = [
-            "berbahaya",
-            "karsinogen",
-            "iritasi",
-            "toksik",
-            "flammable",
-            "cancer"
-        ]
-
-        hasil_bahaya = []
-
-        for kata in keyword_bahaya:
-            if kata.lower() in all_text.lower():
-                hasil_bahaya.append(kata)
-
-        if hasil_bahaya:
-            st.error(f"Bahan memiliki indikasi bahaya: {', '.join(hasil_bahaya)}")
-        else:
-            st.success("Tidak ditemukan kata kunci bahaya.")
+        # tampilkan PDF
+        pdf_viewer(PDFbyte)
 
 # =========================================================
 # PANDUAN PRAKTIKUM
@@ -144,7 +153,9 @@ elif menu == "Panduan Praktikum":
     st.header("📘 Panduan Praktikum")
 
     pilihan = st.selectbox(
+
         "Pilih metode:",
+
         list(data_panduan.keys())
     )
 
@@ -153,15 +164,20 @@ elif menu == "Panduan Praktikum":
     st.subheader(konten["Judul"])
 
     st.text_area(
+
         "Prosedur",
+
         konten["Prosedur"],
+
         height=200
     )
 
-    st.markdown(f"**Referensi:** {konten['Ref']}")
+    st.markdown(
+        f"**Referensi:** {konten['Ref']}"
+    )
 
 # =========================================================
-# K3L
+# K3L & KALIBRASI
 # =========================================================
 elif menu == "K3L & Kalibrasi":
 
@@ -170,14 +186,30 @@ elif menu == "K3L & Kalibrasi":
     with st.expander("Jadwal Kalibrasi"):
 
         df = pd.DataFrame({
-            "Alat": ["Neraca 01", "Neraca 02", "pH Meter"],
-            "Status": ["Terkalibrasi", "Perlu Kalibrasi", "Terkalibrasi"],
-            "Tanggal": ["2024-05-01", "2024-06-15", "2024-04-20"]
+
+            "Alat": [
+                "Neraca 01",
+                "Neraca 02",
+                "pH Meter"
+            ],
+
+            "Status": [
+                "Terkalibrasi",
+                "Perlu Kalibrasi",
+                "Terkalibrasi"
+            ],
+
+            "Tanggal": [
+                "2024-05-01",
+                "2024-06-15",
+                "2024-04-20"
+            ]
         })
 
         st.table(df)
 
-    with st.expander("Limbah B3"):
+    with st.expander("Prosedur Limbah B3"):
+
         st.warning(
-            "Pastikan limbah asam dinetralkan sebelum dibuang."
+            "Pastikan limbah cair asam dinetralkan sebelum dibuang."
         )
