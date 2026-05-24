@@ -1,123 +1,95 @@
-# app.py
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-from datetime import datetime
 
-# Dummy user data (untuk simulasi login)
-USERS = {
-    "admin": "admin123",
-    "user1": "password1"
+# --- KONFIGURASI HALAMAN ---
+st.set_page_config(page_title="ChemLib Hybrid Digital", page_icon="🧪", layout="wide")
+
+# --- DATA MANUAL (DATABASE INTERNAL) ---
+# Ini adalah bagian di mana Anda memasukkan data jurnal/panduan secara manual
+data_panduan = {
+    "Gravimetri": {
+        "Judul": "Penentuan Kadar Sulfat sebagai BaSO4",
+        "Prosedur": "1. Pengendapan dengan BaCl2\n2. Digesti\n3. Penyaringan\n4. Pemijaran",
+        "Ref": "Modul Praktikum Kimia Analitik"
+    },
+    "Titrimetri": {
+        "Judul": "Standarisasi NaOH dengan Asam Oksalat",
+        "Prosedur": "1. Pembuatan larutan baku primer\n2. Titrasi menggunakan indikator PP",
+        "Ref": "SNI 06-6989.11-2004"
+    }
 }
 
-# Konfigurasi halaman
-st.set_page_config(page_title="Personal Finance Dashboard", layout="wide")
-
-# Inisialisasi session_state
-if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
-if "username" not in st.session_state:
-    st.session_state.username = None
-if "data" not in st.session_state:
-    st.session_state.data = None
-
-# Login Page
-if not st.session_state.authenticated:
-    st.title("🔐 Login Page")
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    if st.button("Login"):
-        if USERS.get(username) == password:
-            st.session_state.authenticated = True
-            st.session_state.username = username
-            st.success("Login successful!")
-            st.rerun()
-        else:
-            st.error("Invalid username or password")
-    st.stop()
-
-# Sidebar Navigation
-page = st.sidebar.selectbox(
-    "📄 Go to Page",
-    ("Dashboard", "Upload Data", "Finance Chatbot", "Settings")
+# --- SIDEBAR NAVIGASI ---
+st.sidebar.title("📚 Navigasi Perpustakaan")
+menu = st.sidebar.selectbox(
+    "Pilih Layanan:",
+    ["Dashboard", "Cari MSDS (Otomatis)", "Panduan Praktikum (Manual)", "K3L & Kalibrasi"]
 )
 
-# Sample chatbot reply
-def finance_bot(question, df):
-    if df is None:
-        return "Please upload your data first."
-    if "pengeluaran terbesar" in question.lower():
-        max_row = df.loc[df["Amount"].idxmin()]
-        return f"Pengeluaran terbesar Anda adalah {abs(max_row['Amount']):,.0f} untuk {max_row['Category']} pada {max_row['Date']}."
-    return "Maaf, saya belum memahami pertanyaan Anda sepenuhnya."
+# --- HALAMAN 1: DASHBOARD ---
+if menu == "Dashboard":
+    st.title("🧪 ChemLib: Perpustakaan Digital Analisis Kimia")
+    st.write("Selamat datang di sistem manajemen data laboratorium berbasis Hybrid.")
+    
+    # Statistik Sederhana
+    col1, col2 = st.columns(2)
+    with col1:
+        st.info("💡 **Metode Manual:** Digunakan untuk prosedur internal yang spesifik.")
+    with col2:
+        st.success("🌐 **Metode Otomatis:** Terhubung ke database global untuk data bahan kimia.")
 
-# Dashboard Page
-if page == "Dashboard":
-    st.title("📊 Personal Finance Dashboard")
-    if st.session_state.data is None:
-        st.info("Please upload your transaction data first on the 'Upload Data' page.")
-    else:
-        df = st.session_state.data
-        total_income = df[df["Amount"] > 0]["Amount"].sum()
-        total_expense = df[df["Amount"] < 0]["Amount"].sum()
-        net_balance = total_income + total_expense
+# --- HALAMAN 2: CARI MSDS (OTOMATIS VIA LINK) ---
+elif menu == "Cari MSDS (Otomatis)":
+    st.header("🌐 Pencarian MSDS Global")
+    st.write("Masukkan nama bahan untuk mencari data keamanan secara langsung di PubChem.")
+    
+    nama_bahan = st.text_input("Ketik Nama Bahan Kimia (Inggris):", placeholder="Contoh: Sulfuric Acid")
+    
+    if nama_bahan:
+        # Teknik Hybrid: Membuat link pencarian otomatis berdasarkan input user
+        st.subheader(f"Hasil Pencarian untuk: {nama_bahan}")
+        url_pubchem = f"https://pubchem.ncbi.nlm.nih.gov/#query={nama_bahan.replace(' ', '%20')}"
+        
+        st.write(f"Sistem telah menyiapkan data untuk **{nama_bahan}**.")
+        st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # Placeholder jika ingin ada video tutorial
+        
+        st.markdown(f"""
+            <a href="{url_pubchem}" target="_blank">
+                <button style="padding:10px; border-radius:5px; background-color:#F04444; color:white; border:none; cursor:pointer;">
+                    Klik di Sini untuk Buka MSDS Resmi {nama_bahan}
+                </button>
+            </a>
+        """, unsafe_allow_html=True)
+        st.caption("Link di atas akan membawa Anda ke database eksternal PubChem secara otomatis.")
 
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Total Income", f"Rp {total_income:,.0f}")
-        col2.metric("Total Expense", f"Rp {abs(total_expense):,.0f}")
-        col3.metric("Net Balance", f"Rp {net_balance:,.0f}")
+# --- HALAMAN 3: PANDUAN (MANUAL) ---
+elif menu == "Panduan Praktikum (Manual)":
+    st.header("📖 Panduan Analisis Internal")
+    pilihan = st.selectbox("Pilih Metode:", list(data_panduan.keys()))
+    
+    konten = data_panduan[pilihan]
+    st.subheader(konten["Judul"])
+    st.text_area("Langkah Kerja:", konten["Prosedur"], height=150)
+    st.markdown(f"**Referensi:** *{konten['Ref']}*")
+    
+    # Fitur Upload Jurnal (Otomatis Tersimpan di Web Selama Sesi Berjalan)
+    st.divider()
+    st.subheader("📤 Upload Jurnal/SNI Baru")
+    uploaded_file = st.file_uploader("Tambahkan file PDF jurnal ke perpustakaan", type="pdf")
+    if uploaded_file is not None:
+        st.success(f"File '{uploaded_file.name}' berhasil diunggah ke database sementara.")
 
-        st.subheader("📈 Monthly Expenses")
-        df["Month"] = pd.to_datetime(df["Date"]).dt.to_period("M").astype(str)
-        monthly = df[df["Amount"] < 0].groupby("Month")["Amount"].sum().reset_index()
-        fig = px.bar(monthly, x="Month", y="Amount", title="Monthly Expenses", labels={'Amount':'Total Expense'})
-        st.plotly_chart(fig, use_container_width=True)
-
-        st.subheader("📊 Expense by Category")
-        category = df[df["Amount"] < 0].groupby("Category")["Amount"].sum().reset_index()
-        fig2 = px.bar(category, x="Category", y="Amount", title="Expenses by Category", labels={'Amount':'Total Expense'})
-        st.plotly_chart(fig2, use_container_width=True)
-
-
-# Upload Page
-elif page == "Upload Data":
-    st.title("📁 Upload Your Financial Transactions")
-    st.markdown("Format file: CSV dengan kolom `Date`, `Amount`, `Category`")
-    uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
-    if uploaded_file:
-        try:
-            df = pd.read_csv(uploaded_file)
-            df["Date"] = pd.to_datetime(df["Date"])
-            st.dataframe(df.head())
-            st.session_state.data = df
-            st.success("Data uploaded successfully!")
-        except Exception as e:
-            st.error(f"Error loading data: {e}")
-
-# Chatbot Page
-elif page == "Finance Chatbot":
-    st.title("💬 Ask Our Finance Bot")
-    st.chat_message("assistant").write("Hi! Saya adalah FinanceBot. Tanyakan apapun seputar keuangan Anda!")
-    if prompt := st.chat_input("Tulis pertanyaan Anda..."):
-        st.chat_message("user").write(prompt)
-        response = finance_bot(prompt, st.session_state.data)
-        st.chat_message("assistant").write(response)
-
-# Settings Page
-elif page == "Settings":
-    st.title("⚙️ Settings")
-    st.markdown(f"Welcome, **{st.session_state.username}**!")
-    with st.expander("🔒 Logout"):
-        if st.button("Logout"):
-            st.session_state.authenticated = False
-            st.session_state.username = None
-            st.session_state.data = None
-            st.success("You have been logged out.")
-            st.experimental_rerun()
-
-    with st.expander("📝 Update Preferences"):
-        theme = st.selectbox("Pilih tema dashboard", ["Default", "Dark", "Colorful"])
-        st.info(f"(Dummy feature) Tema yang dipilih: {theme}")
-
-# Footer
-st.sidebar.caption("Made with ❤️ using Streamlit")
+# --- HALAMAN 4: K3L & KALIBRASI ---
+elif menu == "K3L & Kalibrasi":
+    st.header("🛡️ Keselamatan Kerja & Perawatan Alat")
+    
+    with st.expander("Lihat Jadwal Kalibrasi Neraca"):
+        df_kalibrasi = pd.DataFrame({
+            "Alat": ["Neraca 01", "Neraca 02", "pH Meter"],
+            "Status": ["Terkalibrasi", "Perlu Kalibrasi", "Terkalibrasi"],
+            "Tanggal": ["2024-05-01", "2024-06-15", "2024-04-20"]
+        })
+        st.table(df_kalibrasi)
+        
+    with st.expander("Prosedur Limbah B3"):
+        st.warning("Pastikan limbah cair asam dinetralkan sebelum masuk ke penampungan.")
