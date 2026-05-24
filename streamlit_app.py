@@ -61,6 +61,32 @@ elif menu == "Cari MSDS (Otomatis)":
             </a>
         """, unsafe_allow_html=True)
         st.caption("Link di atas akan membawa Anda ke database eksternal PubChem secara otomatis.")
+import PyPDF2
+
+# lokasi file PDF
+pdf_path = "115940_SDS_ID_ID.PDF"
+
+# membuka file PDF
+with open(pdf_path, "rb") as file:
+
+    # membaca PDF
+    reader = PyPDF2.PdfReader(file)
+
+    # jumlah halaman
+    jumlah_halaman = len(reader.pages)
+
+    print("Jumlah halaman:", jumlah_halaman)
+
+    # membaca semua halaman
+    for i in range(jumlah_halaman):
+
+        page = reader.pages[i]
+
+        # mengambil teks
+        text = page.extract_text()
+
+        print(f"\n===== HALAMAN {i+1} =====\n")
+        print(text)
 
 # --- HALAMAN 3: PANDUAN (MANUAL) ---
 elif menu == "Panduan Praktikum (Manual)":
