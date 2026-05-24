@@ -3,7 +3,7 @@ import os
 import base64  # Diperlukan untuk mengubah PDF menjadi format yang bisa dibaca browser
 
 # --- DATABASE LINK & NAMA FILE MSDS ---
-# Menghubungkan nama bahan dengan nama file PDF yang ada di folder 'pdf_msds'
+# Menghubungkan nama bahan dengan nama file PDF yang ada di folder ,pdf_msds
 database_msds = {
     "Asam Klorida (HCl)": "HCl.pdf",
     "Natrium Hidroksida (NaOH)": "NaOH.pdf",
