@@ -1,11 +1,15 @@
 import streamlit as st
 import pandas as pd
+import PyPDF2
 
 # --- KONFIGURASI HALAMAN ---
-st.set_page_config(page_title="ChemLib Hybrid Digital", page_icon="🧪", layout="wide")
+st.set_page_config(
+    page_title="ChemLib Hybrid Digital",
+    page_icon="🧪",
+    layout="wide"
+)
 
-# --- DATA MANUAL (DATABASE INTERNAL) ---
-# Ini adalah bagian di mana Anda memasukkan data jurnal/panduan secara manual
+# --- DATABASE INTERNAL ---
 data_panduan = {
     "Gravimetri": {
         "Judul": "Penentuan Kadar Sulfat sebagai BaSO4",
@@ -19,103 +23,162 @@ data_panduan = {
     }
 }
 
-# --- SIDEBAR NAVIGASI ---
-st.sidebar.title("📚 Navigasi Perpustakaan")
+# --- SIDEBAR ---
+st.sidebar.title("📚 Navigasi")
 menu = st.sidebar.selectbox(
-    "Pilih Layanan:",
-    ["Dashboard", "Cari MSDS (Otomatis)", "Panduan Praktikum (Manual)", "K3L & Kalibrasi"]
+    "Pilih Menu",
+    [
+        "Dashboard",
+        "Cari MSDS",
+        "Panduan Praktikum",
+        "K3L & Kalibrasi"
+    ]
 )
 
-# --- HALAMAN 1: DASHBOARD ---
+# =========================================================
+# DASHBOARD
+# =========================================================
 if menu == "Dashboard":
-    st.title("🧪 ChemLib: Perpustakaan Digital Analisis Kimia")
-    st.write("Selamat datang di sistem manajemen data laboratorium berbasis Hybrid.")
-    
-    # Statistik Sederhana
+
+    st.title("🧪 ChemLib Digital")
+    st.write("Sistem informasi laboratorium kimia berbasis hybrid.")
+
     col1, col2 = st.columns(2)
+
     with col1:
-        st.info("💡 **Metode Manual:** Digunakan untuk prosedur internal yang spesifik.")
+        st.info("📘 Data Internal Laboratorium")
+
     with col2:
-        st.success("🌐 **Metode Otomatis:** Terhubung ke database global untuk data bahan kimia.")
+        st.success("🌐 Integrasi Database Global")
 
-# --- HALAMAN 2: CARI MSDS (OTOMATIS VIA LINK) ---
-elif menu == "Cari MSDS (Otomatis)":
-    st.header("🌐 Pencarian MSDS Global")
-    st.write("Masukkan nama bahan untuk mencari data keamanan secara langsung di PubChem.")
-    
-    nama_bahan = st.text_input("Ketik Nama Bahan Kimia (Inggris):", placeholder="Contoh: Sulfuric Acid")
-    
+# =========================================================
+# CARI MSDS
+# =========================================================
+elif menu == "Cari MSDS":
+
+    st.header("🌐 Pencarian MSDS")
+
+    nama_bahan = st.text_input(
+        "Masukkan nama bahan kimia:",
+        placeholder="Contoh: Crystal Violet"
+    )
+
     if nama_bahan:
-        # Teknik Hybrid: Membuat link pencarian otomatis berdasarkan input user
-        st.subheader(f"Hasil Pencarian untuk: {nama_bahan}")
+
+        st.subheader(f"Hasil pencarian: {nama_bahan}")
+
+        # link otomatis ke PubChem
         url_pubchem = f"https://pubchem.ncbi.nlm.nih.gov/#query={nama_bahan.replace(' ', '%20')}"
-        
-        st.write(f"Sistem telah menyiapkan data untuk **{nama_bahan}**.")
-        st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # Placeholder jika ingin ada video tutorial
-        
+
         st.markdown(f"""
-            <a href="{url_pubchem}" target="_blank">
-                <button style="padding:10px; border-radius:5px; background-color:#F04444; color:white; border:none; cursor:pointer;">
-                    Klik di Sini untuk Buka MSDS Resmi {nama_bahan}
-                </button>
-            </a>
-        """, unsafe_allow_html=True)
-        st.caption("Link di atas akan membawa Anda ke database eksternal PubChem secara otomatis.")
-import PyPDF2
+        [🔗 Buka Data PubChem]({url_pubchem})
+        """)
 
-# lokasi file PDF
-pdf_path = "115940_SDS_ID_ID.PDF"
-
-# membuka file PDF
-with open(pdf_path, "rb") as file:
-
-    # membaca PDF
-    reader = PyPDF2.PdfReader(file)
-
-    # jumlah halaman
-    jumlah_halaman = len(reader.pages)
-
-    print("Jumlah halaman:", jumlah_halaman)
-
-    # membaca semua halaman
-    for i in range(jumlah_halaman):
-
-        page = reader.pages[i]
-
-        # mengambil teks
-        text = page.extract_text()
-
-        print(f"\n===== HALAMAN {i+1} =====\n")
-        print(text)
-
-# --- HALAMAN 3: PANDUAN (MANUAL) ---
-elif menu == "Panduan Praktikum (Manual)":
-    st.header("📖 Panduan Analisis Internal")
-    pilihan = st.selectbox("Pilih Metode:", list(data_panduan.keys()))
-    
-    konten = data_panduan[pilihan]
-    st.subheader(konten["Judul"])
-    st.text_area("Langkah Kerja:", konten["Prosedur"], height=150)
-    st.markdown(f"**Referensi:** *{konten['Ref']}*")
-    
-    # Fitur Upload Jurnal (Otomatis Tersimpan di Web Selama Sesi Berjalan)
     st.divider()
-    st.subheader("📤 Upload Jurnal/SNI Baru")
-    uploaded_file = st.file_uploader("Tambahkan file PDF jurnal ke perpustakaan", type="pdf")
-    if uploaded_file is not None:
-        st.success(f"File '{uploaded_file.name}' berhasil diunggah ke database sementara.")
 
-# --- HALAMAN 4: K3L & KALIBRASI ---
+    # =====================================================
+    # UPLOAD PDF SDS
+    # =====================================================
+    st.subheader("📄 Upload File SDS / MSDS")
+
+    uploaded_file = st.file_uploader(
+        "Upload file PDF SDS",
+        type="pdf"
+    )
+
+    if uploaded_file is not None:
+
+        st.success(f"File berhasil diupload: {uploaded_file.name}")
+
+        # membaca PDF
+        pdf_reader = PyPDF2.PdfReader(uploaded_file)
+
+        jumlah_halaman = len(pdf_reader.pages)
+
+        st.write(f"Jumlah halaman PDF: {jumlah_halaman}")
+
+        # mengambil teks seluruh halaman
+        all_text = ""
+
+        for page in pdf_reader.pages:
+            all_text += page.extract_text()
+
+        # tampilkan isi PDF
+        st.subheader("📖 Isi Dokumen SDS")
+
+        st.text_area(
+            "Hasil ekstraksi teks:",
+            all_text,
+            height=400
+        )
+
+        # =================================================
+        # PENCARIAN BAHAYA OTOMATIS
+        # =================================================
+        st.subheader("⚠️ Identifikasi Bahaya")
+
+        keyword_bahaya = [
+            "berbahaya",
+            "karsinogen",
+            "iritasi",
+            "toksik",
+            "flammable",
+            "cancer"
+        ]
+
+        hasil_bahaya = []
+
+        for kata in keyword_bahaya:
+            if kata.lower() in all_text.lower():
+                hasil_bahaya.append(kata)
+
+        if hasil_bahaya:
+            st.error(f"Bahan memiliki indikasi bahaya: {', '.join(hasil_bahaya)}")
+        else:
+            st.success("Tidak ditemukan kata kunci bahaya.")
+
+# =========================================================
+# PANDUAN PRAKTIKUM
+# =========================================================
+elif menu == "Panduan Praktikum":
+
+    st.header("📘 Panduan Praktikum")
+
+    pilihan = st.selectbox(
+        "Pilih metode:",
+        list(data_panduan.keys())
+    )
+
+    konten = data_panduan[pilihan]
+
+    st.subheader(konten["Judul"])
+
+    st.text_area(
+        "Prosedur",
+        konten["Prosedur"],
+        height=200
+    )
+
+    st.markdown(f"**Referensi:** {konten['Ref']}")
+
+# =========================================================
+# K3L
+# =========================================================
 elif menu == "K3L & Kalibrasi":
-    st.header("🛡️ Keselamatan Kerja & Perawatan Alat")
-    
-    with st.expander("Lihat Jadwal Kalibrasi Neraca"):
-        df_kalibrasi = pd.DataFrame({
+
+    st.header("🛡️ K3L dan Kalibrasi")
+
+    with st.expander("Jadwal Kalibrasi"):
+
+        df = pd.DataFrame({
             "Alat": ["Neraca 01", "Neraca 02", "pH Meter"],
             "Status": ["Terkalibrasi", "Perlu Kalibrasi", "Terkalibrasi"],
             "Tanggal": ["2024-05-01", "2024-06-15", "2024-04-20"]
         })
-        st.table(df_kalibrasi)
-        
-    with st.expander("Prosedur Limbah B3"):
-        st.warning("Pastikan limbah cair asam dinetralkan sebelum masuk ke penampungan.")
+
+        st.table(df)
+
+    with st.expander("Limbah B3"):
+        st.warning(
+            "Pastikan limbah asam dinetralkan sebelum dibuang."
+        )
