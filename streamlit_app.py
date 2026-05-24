@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-from streamlit_pdf_viewer import pdf_viewer
+import os
+import base64
 
 # =========================================================
 # KONFIGURASI HALAMAN
@@ -12,7 +13,7 @@ st.set_page_config(
 )
 
 # =========================================================
-# DATABASE INTERNAL
+# DATABASE PANDUAN
 # =========================================================
 data_panduan = {
 
@@ -47,9 +48,9 @@ data_panduan = {
 daftar_msds = {
 
     "Crystal Violet":
-    "msds/crystal_violet.pdf"
+    "msds/crystal_violet.pdf",
 
-    # Tambahkan file lain di sini
+    # Tambahkan file lain di bawah ini
     # "Asam Sulfat": "msds/asam_sulfat.pdf"
 }
 
@@ -116,34 +117,66 @@ elif menu == "Cari MSDS":
         list(daftar_msds.keys())
     )
 
-    # path file
+    # =====================================================
+    # AMBIL PATH FILE
+    # =====================================================
     file_path = daftar_msds[pilihan]
 
     # =====================================================
-    # BUKA FILE PDF
+    # CEK FILE ADA ATAU TIDAK
     # =====================================================
-    with open(file_path, "rb") as pdf_file:
+    if os.path.exists(file_path):
 
-        PDFbyte = pdf_file.read()
+        with open(file_path, "rb") as pdf_file:
 
-        st.subheader(f"📘 MSDS {pilihan}")
+            PDFbyte = pdf_file.read()
 
-        # tombol download
-        st.download_button(
+            st.subheader(f"📘 MSDS {pilihan}")
 
-            label="⬇️ Download MSDS",
+            # =================================================
+            # TOMBOL DOWNLOAD
+            # =================================================
+            st.download_button(
 
-            data=PDFbyte,
+                label="⬇️ Download MSDS",
 
-            file_name=f"{pilihan}.pdf",
+                data=PDFbyte,
 
-            mime="application/pdf"
+                file_name=f"{pilihan}.pdf",
+
+                mime="application/pdf"
+            )
+
+            st.divider()
+
+            # =================================================
+            # TAMPILKAN PDF
+            # =================================================
+            base64_pdf = base64.b64encode(PDFbyte).decode("utf-8")
+
+            pdf_display = f"""
+            <iframe
+                src="data:application/pdf;base64,{base64_pdf}"
+                width="100%"
+                height="800"
+                type="application/pdf">
+            </iframe>
+            """
+
+            st.markdown(
+                pdf_display,
+                unsafe_allow_html=True
+            )
+
+    else:
+
+        st.error(
+            f"File tidak ditemukan: {file_path}"
         )
 
-        st.divider()
-
-        # tampilkan PDF
-        pdf_viewer(PDFbyte)
+        st.info(
+            "Pastikan folder dan nama file PDF sudah benar."
+        )
 
 # =========================================================
 # PANDUAN PRAKTIKUM
