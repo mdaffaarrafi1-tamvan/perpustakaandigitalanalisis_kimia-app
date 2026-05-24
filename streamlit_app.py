@@ -9,40 +9,34 @@ database_msds = {
     "Asam Sulfat (H2SO4)": "H2SO4.pdf",
 }
 
-# --- KONFIGURASI HALAMAN ---
+# --- SETTING HALAMAN ---
 st.set_page_config(page_title="Library Analisis Kimia", page_icon="🧪", layout="wide")
 
-# --- SIDEBAR NAVIGASI ---
+# --- SIDEBAR ---
 st.sidebar.title("📚 Navigasi")
 menu = st.sidebar.radio(
-    "Pilih Kategori:",
-    ["Home", "MSDS & Safety", "SNI & ISO", "Kalibrasi Alat", "Panduan Analisis (Gravi/Titri)", "K3L & Limbah"]
+    "Pilih Menu:",
+    ["Home", "MSDS & Safety", "SNI & ISO", "Kalibrasi Alat", "Panduan Analisis", "K3L & Limbah"]
 )
 
 # --- HOME ---
 if menu == "Home":
     st.title("🧪 Perpustakaan Digital Analisis Kimia")
-    st.subheader("Selamat Datang, Analis!")
-    st.write("Silakan pilih kategori di samping untuk memulai.")
+    st.write("Selamat datang di sistem database laboratorium.")
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Database MSDS", f"{len(database_msds)} Bahan")
-    col2.metric("Standar SNI", "12 Dokumen")
-    col3.metric("Metode Uji", "24 Prosedur")
+    col1.metric("MSDS", "3 File")
+    col2.metric("SNI", "12 Dokumen")
+    col3.metric("Metode", "24 Prosedur")
 
-# --- MSDS & SAFETY ---
+# --- MSDS ---
 elif menu == "MSDS & Safety":
-    st.header("🗃️ Database MSDS & Simbol Bahaya")
+    st.header("🗃️ Database MSDS & Safety")
 
-    # 🔍 DEBUG SYSTEM (WAJIB UNTUK CEK ERROR)
-    st.subheader("🔧 DEBUG INFO")
+    # 🔥 PATH FIX SESUAI LAPTOP KAMU
+    folder_path = r"C:\Users\ASUS\OneDrive\Desktop\PDF_ANJING"
 
-    st.write("Working Directory:", os.getcwd())
-    st.write("File Script:", os.path.dirname(os.path.abspath(__file__)))
-
-    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-    folder_path = os.path.join(BASE_DIR, "PDF_ANJING")
-
+    st.subheader("🔧 Debug Info (hapus nanti kalau sudah normal)")
     st.write("Folder Path:", folder_path)
     st.write("Folder Exists:", os.path.exists(folder_path))
 
@@ -50,74 +44,74 @@ elif menu == "MSDS & Safety":
         st.write("Isi Folder:", os.listdir(folder_path))
     else:
         st.error("Folder PDF_ANJING tidak ditemukan!")
+        st.stop()
 
-    # --- PILIH BAHAN ---
-    pilihan_bahan = st.selectbox(
-        "Pilih atau Cari Bahan Kimia:",
+    # PILIH BAHAN
+    pilihan = st.selectbox(
+        "Pilih Bahan Kimia:",
         list(database_msds.keys())
     )
 
-    nama_file_pdf = database_msds[pilihan_bahan]
+    nama_file = database_msds[pilihan]
+    file_path = os.path.join(folder_path, nama_file)
 
-    # --- PATH FILE PDF ---
-    path_file = os.path.join(folder_path, nama_file_pdf)
+    st.info(f"File dipilih: {nama_file}")
+    st.write("Full Path:", file_path)
+    st.write("File Exists:", os.path.exists(file_path))
 
-    st.info(f"Anda memilih: **{pilihan_bahan}**")
-    st.write("Path file PDF:", path_file)
-    st.write("File Exists:", os.path.exists(path_file))
-
-    # --- CEK FILE ---
-    if os.path.exists(path_file):
-        with open(path_file, "rb") as file_pdf:
-            konten_pdf = file_pdf.read()
+    # CEK FILE
+    if os.path.exists(file_path):
+        with open(file_path, "rb") as f:
+            pdf_data = f.read()
 
         # DOWNLOAD BUTTON
         st.download_button(
-            label=f"📥 Download {nama_file_pdf}",
-            data=konten_pdf,
-            file_name=nama_file_pdf,
+            label="📥 Download MSDS",
+            data=pdf_data,
+            file_name=nama_file,
             mime="application/pdf"
         )
 
         # PREVIEW PDF
-        base64_pdf = base64.b64encode(konten_pdf).decode("utf-8")
+        base64_pdf = base64.b64encode(pdf_data).decode("utf-8")
 
         pdf_display = f"""
         <iframe 
             src="data:application/pdf;base64,{base64_pdf}" 
             width="100%" 
-            height="650">
+            height="700">
         </iframe>
         """
 
-        st.components.v1.html(pdf_display, height=700)
+        st.components.v1.html(pdf_display, height=750)
 
     else:
-        st.error("❌ File PDF tidak ditemukan! Cek nama file & folder.")
+        st.error("❌ File PDF tidak ditemukan. Cek nama file di folder PDF_ANJING.")
 
 # --- SNI & ISO ---
 elif menu == "SNI & ISO":
-    st.header("📜 Standar SNI & ISO 17025")
-    st.write("1. SNI 01-3553-2006: Air minum dalam kemasan.")
+    st.header("📜 Standar SNI & ISO")
+    st.write("Contoh: SNI Air Minum, ISO 17025, dll.")
 
 # --- KALIBRASI ---
 elif menu == "Kalibrasi Alat":
-    st.header("⚖️ Panduan Kalibrasi Instrumen")
-    st.write("Pastikan alat dalam kondisi siap pakai.")
+    st.header("⚖️ Kalibrasi Alat Laboratorium")
+    st.write("Panduan kalibrasi dasar alat kimia.")
 
-# --- GRAVI / TITRI ---
-elif menu == "Panduan Analisis (Gravi/Titri)":
-    st.header("🔬 Metode Analisis Konvensional")
+# --- ANALISIS ---
+elif menu == "Panduan Analisis":
+    st.header("🔬 Metode Analisis")
 
-    metode = st.radio("Pilih Metode:", ["Gravimetri", "Titrimetri"], horizontal=True)
+    metode = st.radio("Pilih Metode:", ["Gravimetri", "Titrimetri"])
 
     if metode == "Gravimetri":
-        st.code("Pengendapan → Penyaringan → Pengeringan → Penimbangan")
+        st.code("Pengendapan → Filtrasi → Pengeringan → Penimbangan")
     else:
         st.code("Pipet → Titrasi → Endpoint → Perhitungan")
 
 # --- K3L ---
 elif menu == "K3L & Limbah":
-    st.header("🛡️ Manajemen K3L & Limbah")
-    st.checkbox("Limbah Logam Berat (Wadah Biru)")
-    st.checkbox("Limbah Organik (Wadah Hijau)")
+    st.header("🛡️ K3L & Limbah")
+    st.checkbox("Limbah Logam Berat")
+    st.checkbox("Limbah Organik")
+    st.checkbox("APD Wajib Digunakan")
