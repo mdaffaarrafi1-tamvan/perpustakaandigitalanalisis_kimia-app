@@ -3,10 +3,10 @@ import os
 import base64  # Diperlukan untuk mengubah PDF menjadi format yang bisa dibaca browser
 
 # --- DATABASE LINK & NAMA FILE MSDS ---
-# Menghubungkan nama bahan dengan nama file PDF yang ada di folder 'PDF_ANJING'
+# Menghubungkan nama bahan dengan nama file PDF yang ada di folder 'pdf_msds'
 database_msds = {
-    "Asam Klorida (HCl)": "Ikan.pdf",
-    "Natrium Hidroksida (NaOH)": "115940_SDS_ID_ID.pdf",
+    "Asam Klorida (HCl)": "HCl.pdf",
+    "Natrium Hidroksida (NaOH)": "NaOH.pdf",
     "Asam Sulfat (H2SO4)": "H2SO4.pdf",
 }
 
@@ -40,12 +40,12 @@ elif menu == "MSDS & Safety":
     nama_file_pdf = database_msds[pilihan_bahan]
     
     # Jalur menuju file PDF di dalam folder 'pdf_msds'
-    path_file = os.path.join("PDF_ANJING", nama_file_pdf)
+    path_file = os.path.join("pdf_msds", nama_file_pdf)
     
     st.info(f"Anda memilih: **{pilihan_bahan}**")
     
     # Cek apakah file PDF-nya beneran ada di dalam folder
-    if os.path.exists(PDF_ANJING):
+    if os.path.exists(path_file):
         # 1. LOGIKA TOMBOL DOWNLOAD
         with open(path_file, "rb") as file_pdf:
             konten_pdf = file_pdf.read()
@@ -89,4 +89,3 @@ elif menu == "Panduan Analisis (Gravi/Titri)":
 elif menu == "K3L & Limbah":
     st.header("🛡️ Manajemen K3L & Limbah")
     st.checkbox("Limbah Logam Berat (Wadah Biru)")
-    
