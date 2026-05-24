@@ -40,7 +40,7 @@ elif menu == "MSDS & Safety":
     nama_file_pdf = database_msds[pilihan_bahan]
     
     # Jalur menuju file PDF di dalam folder 'pdf_msds'
-    path_file = os.path.join("pdf_msds", nama_file_pdf)
+    path_file = os.path.join("PDF_ANJING", nama_file_pdf)
     
     st.info(f"Anda memilih: **{pilihan_bahan}**")
     
