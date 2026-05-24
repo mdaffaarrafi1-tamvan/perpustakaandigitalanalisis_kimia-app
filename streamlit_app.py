@@ -48,7 +48,7 @@ elif menu == "MSDS & Safety":
     if os.path.exists(path_file):
         # 1. LOGIKA TOMBOL DOWNLOAD
         with open(path_file, "rb") as file_pdf:
-            konten_pdf = file_pdf.read()
+            konten_pdf = msds_pdf.read()
             
             st.download_button(
                 label=f"📥 Download File PDF {nama_file_pdf}",
