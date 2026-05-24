@@ -13,7 +13,7 @@ st.set_page_config(
 )
 
 # =========================================================
-# DATABASE PANDUAN
+# DATABASE PANDUAN PRAKTIKUM
 # =========================================================
 data_panduan = {
 
@@ -48,10 +48,7 @@ data_panduan = {
 daftar_msds = {
 
     "Crystal Violet":
-    "msds/crystal_violet.pdf",
-
-    # Tambahkan file lain di bawah ini
-    # "Asam Sulfat": "msds/asam_sulfat.pdf"
+    "115940_SDS_ID_ID.PDF"
 }
 
 # =========================================================
@@ -97,7 +94,7 @@ if menu == "Dashboard":
         )
 
 # =========================================================
-# CARI MSDS
+# MENU MSDS
 # =========================================================
 elif menu == "Cari MSDS":
 
@@ -108,7 +105,7 @@ elif menu == "Cari MSDS":
     )
 
     # =====================================================
-    # PILIH BAHAN
+    # PILIH BAHAN KIMIA
     # =====================================================
     pilihan = st.selectbox(
 
@@ -142,7 +139,7 @@ elif menu == "Cari MSDS":
 
                 data=PDFbyte,
 
-                file_name=f"{pilihan}.pdf",
+                file_name="115940_SDS_ID_ID.PDF",
 
                 mime="application/pdf"
             )
@@ -150,7 +147,7 @@ elif menu == "Cari MSDS":
             st.divider()
 
             # =================================================
-            # TAMPILKAN PDF
+            # PREVIEW PDF
             # =================================================
             base64_pdf = base64.b64encode(PDFbyte).decode("utf-8")
 
@@ -175,7 +172,7 @@ elif menu == "Cari MSDS":
         )
 
         st.info(
-            "Pastikan folder dan nama file PDF sudah benar."
+            "Pastikan file PDF sudah diupload ke GitHub dan berada satu folder dengan streamlit_app.py"
         )
 
 # =========================================================
