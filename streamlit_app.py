@@ -1,11 +1,10 @@
 import streamlit as st
 import os
-import base64  # Diperlukan untuk mengubah PDF menjadi format yang bisa dibaca browser
+import base64
 
-# --- DATABASE LINK & NAMA FILE MSDS ---
-# Menghubungkan nama bahan dengan nama file PDF yang ada di folder 'pdf_msds'
+# --- DATABASE MSDS ---
 database_msds = {
-    "Asam Klorida (HCl)": "HCl.pdf",
+    "Asam Klorida (HCl)": "Ikan.pdf",
     "Natrium Hidroksida (NaOH)": "NaOH.pdf",
     "Asam Sulfat (H2SO4)": "H2SO4.pdf",
 }
@@ -13,79 +12,59 @@ database_msds = {
 # --- KONFIGURASI HALAMAN ---
 st.set_page_config(page_title="Library Analisis Kimia", page_icon="🧪", layout="wide")
 
-# --- SIDEBAR NAVIGASI ---
+# --- SIDEBAR ---
 st.sidebar.title("📚 Navigasi")
 menu = st.sidebar.radio(
     "Pilih Kategori:",
     ["Home", "MSDS & Safety", "SNI & ISO", "Kalibrasi Alat", "Panduan Analisis (Gravi/Titri)", "K3L & Limbah"]
 )
 
-# --- HALAMAN HOME ---
+# --- HOME ---
 if menu == "Home":
     st.title("🧪 Perpustakaan Digital Analisis Kimia")
-    st.subheader("Selamat Datang, Analis!")
-    st.write("Silakan pilih kategori di samping untuk memulai pencarian data.")
-    
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Database MSDS", f"{len(database_msds)}+ Bahan")
-    col2.metric("Standar SNI", "12 Dokumen")
-    col3.metric("Metode Uji", "24 Prosedur")
 
-# --- HALAMAN MSDS (TAMPILKAN & DOWNLOAD PDF) ---
+# --- MSDS ---
 elif menu == "MSDS & Safety":
     st.header("🗃️ Database MSDS & Simbol Bahaya")
-    st.write("Silakan pilih bahan untuk melihat pratinjau dan mengunduh dokumen PDF MSDS.")
-    
-    pilihan_bahan = st.selectbox("Pilih atau Cari Bahan Kimia:", list(database_msds.keys()))
+
+    pilihan_bahan = st.selectbox(
+        "Pilih Bahan Kimia:",
+        list(database_msds.keys())
+    )
+
     nama_file_pdf = database_msds[pilihan_bahan]
-    
-    # Jalur menuju file PDF di dalam folder 'pdf_msds'
-    path_file = os.path.join("PDF_ANJING", nama_file_pdf)
-    
+
+    # 🔥 PATH SUDAH DIUBAH KE PDF_ANJING
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    path_file = os.path.join(BASE_DIR, "PDF_ANJING", nama_file_pdf)
+
     st.info(f"Anda memilih: **{pilihan_bahan}**")
-    
-    # Cek apakah file PDF-nya beneran ada di dalam folder
+
+    # DEBUG (boleh dihapus nanti)
+    st.write("Path file:", path_file)
+    st.write("File ada?", os.path.exists(path_file))
+
     if os.path.exists(path_file):
-        # 1. LOGIKA TOMBOL DOWNLOAD
         with open(path_file, "rb") as file_pdf:
             konten_pdf = file_pdf.read()
-            
-            st.download_button(
-                label=f"📥 Download File PDF {nama_file_pdf}",
-                data=konten_pdf,
-                file_name=nama_file_pdf,
-                mime="application/pdf",
-                use_container_width=True
-            )
-        
-        # 2. LOGIKA MENAMPILKAN PREVIEW PDF DI LAYAR
-        st.subheader(f"📄 Pratinjau Dokumen: {nama_file_pdf}")
-        
-        # Mengubah PDF ke format base64 agar bisa ditempel di komponen bawaan web
-        base64_pdf = base64.b64encode(konten_pdf).decode('utf-8')
-        pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="600" type="application/pdf"></iframe>'
-        
-        # Menampilkan iframe PDF ke dalam Streamlit secara aman
-        st.markdown(pdf_display, unsafe_allow_html=True)
-        
+
+        st.download_button(
+            label=f"📥 Download {nama_file_pdf}",
+            data=konten_pdf,
+            file_name=nama_file_pdf,
+            mime="application/pdf"
+        )
+
+        base64_pdf = base64.b64encode(konten_pdf).decode("utf-8")
+        pdf_display = f"""
+        <iframe 
+            src="data:application/pdf;base64,{base64_pdf}" 
+            width="100%" 
+            height="650">
+        </iframe>
+        """
+
+        st.components.v1.html(pdf_display, height=700)
+
     else:
-        st.error(f"⚠️ File '{nama_file_pdf}' belum dimasukkan ke dalam folder 'pdf_msds'. Silakan salin file PDF Anda ke folder tersebut terlebih dahulu.")
-
-# --- HALAMAN LAINNYA (TETAP AMAN) ---
-elif menu == "SNI & ISO":
-    st.header("📜 Standar SNI & ISO 17025")
-    st.write("1. **SNI 01-3553-2006:** Air minum dalam kemasan.")
-
-elif menu == "Kalibrasi Alat":
-    st.header("⚖️ Panduan Kalibrasi Instrumen")
-    st.write("1. Pastikan waterpass berada di tengah.")
-
-elif menu == "Panduan Analisis (Gravi/Titri)":
-    st.header("🔬 Metode Analisis Konvensional")
-    metode = st.radio("Pilih Metode:", ["Gravimetri", "Titrimetri"], horizontal=True)
-    if metode == "Gravimetri":
-        st.code("Pengendapan -> Penyaringan -> Pencucian -> Pengeringan -> Penimbangan")
-
-elif menu == "K3L & Limbah":
-    st.header("🛡️ Manajemen K3L & Limbah")
-    st.checkbox("Limbah Logam Berat (Wadah Biru)")
+        st.error("File tidak ditemukan! Cek folder 'PDF_ANJING' dan nama file.")
