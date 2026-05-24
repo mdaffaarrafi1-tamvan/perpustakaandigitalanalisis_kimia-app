@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import PyPDF2
 
 # --- KONFIGURASI HALAMAN ---
 st.set_page_config(
