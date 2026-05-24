@@ -6,7 +6,7 @@ import base64  # Diperlukan untuk mengubah PDF menjadi format yang bisa dibaca b
 # Menghubungkan nama bahan dengan nama file PDF yang ada di folder 'pdf_msds'
 database_msds = {
     "Asam Klorida (HCl)": "Ikan.pdf.pdf",
-    "Asam Nitrat (HNO3)": "HNO3.pdf",
+    "Asam Nitrat (HNO3)": "MSDS Nitric Acid.PDF",
     "Asam Sulfat (H2SO4)": "H2SO4.pdf",
 }
 
