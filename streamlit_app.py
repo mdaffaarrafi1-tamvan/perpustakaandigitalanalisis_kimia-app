@@ -1,245 +1,91 @@
 import streamlit as st
-import pandas as pd
 import os
-import base64
+import base64  # Diperlukan untuk mengubah PDF menjadi format yang bisa dibaca browser
 
-# =========================================================
-# KONFIGURASI HALAMAN
-# =========================================================
-st.set_page_config(
-    page_title="ChemLib Hybrid Digital",
-    page_icon="🧪",
-    layout="wide"
-)
-
-# =========================================================
-# DATABASE PANDUAN PRAKTIKUM
-# =========================================================
-data_panduan = {
-
-    "Gravimetri": {
-
-        "Judul": "Penentuan Kadar Sulfat sebagai BaSO4",
-
-        "Prosedur":
-        "1. Pengendapan dengan BaCl2\n"
-        "2. Digesti\n"
-        "3. Penyaringan\n"
-        "4. Pemijaran",
-
-        "Ref": "Modul Praktikum Kimia Analitik"
-    },
-
-    "Titrimetri": {
-
-        "Judul": "Standarisasi NaOH dengan Asam Oksalat",
-
-        "Prosedur":
-        "1. Pembuatan larutan baku primer\n"
-        "2. Titrasi menggunakan indikator PP",
-
-        "Ref": "SNI 06-6989.11-2004"
-    }
+# --- DATABASE LINK & NAMA FILE MSDS ---
+# Menghubungkan nama bahan dengan nama file PDF yang ada di folder 'pdf_msds'
+database_msds = {
+    "Asam Klorida (HCl)": "HCl.pdf",
+    "Natrium Hidroksida (NaOH)": "NaOH.pdf",
+    "Asam Sulfat (H2SO4)": "H2SO4.pdf",
 }
 
-# =========================================================
-# DATABASE MSDS
-# =========================================================
-daftar_msds = {
+# --- KONFIGURASI HALAMAN ---
+st.set_page_config(page_title="Library Analisis Kimia", page_icon="🧪", layout="wide")
 
-    "Crystal Violet":
-    "115940_SDS_ID_ID.PDF"
-}
-
-# =========================================================
-# SIDEBAR
-# =========================================================
+# --- SIDEBAR NAVIGASI ---
 st.sidebar.title("📚 Navigasi")
-
-menu = st.sidebar.selectbox(
-
-    "Pilih Menu",
-
-    [
-        "Dashboard",
-        "Cari MSDS",
-        "Panduan Praktikum",
-        "K3L & Kalibrasi"
-    ]
+menu = st.sidebar.radio(
+    "Pilih Kategori:",
+    ["Home", "MSDS & Safety", "SNI & ISO", "Kalibrasi Alat", "Panduan Analisis (Gravi/Titri)", "K3L & Limbah"]
 )
 
-# =========================================================
-# DASHBOARD
-# =========================================================
-if menu == "Dashboard":
+# --- HALAMAN HOME ---
+if menu == "Home":
+    st.title("🧪 Perpustakaan Digital Analisis Kimia")
+    st.subheader("Selamat Datang, Analis!")
+    st.write("Silakan pilih kategori di samping untuk memulai pencarian data.")
+    
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Database MSDS", f"{len(database_msds)}+ Bahan")
+    col2.metric("Standar SNI", "12 Dokumen")
+    col3.metric("Metode Uji", "24 Prosedur")
 
-    st.title("🧪 ChemLib Digital")
-
-    st.write(
-        "Sistem informasi perpustakaan digital laboratorium kimia berbasis hybrid."
-    )
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-
-        st.info(
-            "📘 Menyediakan panduan praktikum internal laboratorium."
-        )
-
-    with col2:
-
-        st.success(
-            "📄 Menyediakan database MSDS yang dapat dilihat dan diunduh."
-        )
-
-# =========================================================
-# MENU MSDS
-# =========================================================
-elif menu == "Cari MSDS":
-
-    st.header("📄 Database MSDS Laboratorium")
-
-    st.write(
-        "Pilih bahan kimia untuk melihat dokumen MSDS."
-    )
-
-    # =====================================================
-    # PILIH BAHAN KIMIA
-    # =====================================================
-    pilihan = st.selectbox(
-
-        "Pilih bahan kimia:",
-
-        list(daftar_msds.keys())
-    )
-
-    # =====================================================
-    # AMBIL PATH FILE
-    # =====================================================
-    file_path = daftar_msds[pilihan]
-
-    # =====================================================
-    # CEK FILE ADA ATAU TIDAK
-    # =====================================================
-    if os.path.exists(file_path):
-
-        with open(file_path, "rb") as pdf_file:
-
-            PDFbyte = pdf_file.read()
-
-            st.subheader(f"📘 MSDS {pilihan}")
-
-            # =================================================
-            # TOMBOL DOWNLOAD
-            # =================================================
+# --- HALAMAN MSDS (TAMPILKAN & DOWNLOAD PDF) ---
+elif menu == "MSDS & Safety":
+    st.header("🗃️ Database MSDS & Simbol Bahaya")
+    st.write("Silakan pilih bahan untuk melihat pratinjau dan mengunduh dokumen PDF MSDS.")
+    
+    pilihan_bahan = st.selectbox("Pilih atau Cari Bahan Kimia:", list(database_msds.keys()))
+    nama_file_pdf = database_msds[pilihan_bahan]
+    
+    # Jalur menuju file PDF di dalam folder 'pdf_msds'
+    path_file = os.path.join("pdf_msds", nama_file_pdf)
+    
+    st.info(f"Anda memilih: **{pilihan_bahan}**")
+    
+    # Cek apakah file PDF-nya beneran ada di dalam folder
+    if os.path.exists(path_file):
+        # 1. LOGIKA TOMBOL DOWNLOAD
+        with open(path_file, "rb") as file_pdf:
+            konten_pdf = file_pdf.read()
+            
             st.download_button(
-
-                label="⬇️ Download MSDS",
-
-                data=PDFbyte,
-
-                file_name="115940_SDS_ID_ID.PDF",
-
-                mime="application/pdf"
+                label=f"📥 Download File PDF {nama_file_pdf}",
+                data=konten_pdf,
+                file_name=nama_file_pdf,
+                mime="application/pdf",
+                use_container_width=True
             )
-
-            st.divider()
-
-            # =================================================
-            # PREVIEW PDF
-            # =================================================
-            base64_pdf = base64.b64encode(PDFbyte).decode("utf-8")
-
-            pdf_display = f"""
-            <iframe
-                src="data:application/pdf;base64,{base64_pdf}"
-                width="100%"
-                height="800"
-                type="application/pdf">
-            </iframe>
-            """
-
-            st.markdown(
-                pdf_display,
-                unsafe_allow_html=True
-            )
-
+        
+        # 2. LOGIKA MENAMPILKAN PREVIEW PDF DI LAYAR
+        st.subheader(f"📄 Pratinjau Dokumen: {nama_file_pdf}")
+        
+        # Mengubah PDF ke format base64 agar bisa ditempel di komponen bawaan web
+        base64_pdf = base64.b64encode(konten_pdf).decode('utf-8')
+        pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="600" type="application/pdf"></iframe>'
+        
+        # Menampilkan iframe PDF ke dalam Streamlit secara aman
+        st.markdown(pdf_display, unsafe_allow_html=True)
+        
     else:
+        st.error(f"⚠️ File '{nama_file_pdf}' belum dimasukkan ke dalam folder 'pdf_msds'. Silakan salin file PDF Anda ke folder tersebut terlebih dahulu.")
 
-        st.error(
-            f"File tidak ditemukan: {file_path}"
-        )
+# --- HALAMAN LAINNYA (TETAP AMAN) ---
+elif menu == "SNI & ISO":
+    st.header("📜 Standar SNI & ISO 17025")
+    st.write("1. **SNI 01-3553-2006:** Air minum dalam kemasan.")
 
-        st.info(
-            "Pastikan file PDF sudah diupload ke GitHub dan berada satu folder dengan streamlit_app.py"
-        )
+elif menu == "Kalibrasi Alat":
+    st.header("⚖️ Panduan Kalibrasi Instrumen")
+    st.write("1. Pastikan waterpass berada di tengah.")
 
-# =========================================================
-# PANDUAN PRAKTIKUM
-# =========================================================
-elif menu == "Panduan Praktikum":
+elif menu == "Panduan Analisis (Gravi/Titri)":
+    st.header("🔬 Metode Analisis Konvensional")
+    metode = st.radio("Pilih Metode:", ["Gravimetri", "Titrimetri"], horizontal=True)
+    if metode == "Gravimetri":
+        st.code("Pengendapan -> Penyaringan -> Pencucian -> Pengeringan -> Penimbangan")
 
-    st.header("📘 Panduan Praktikum")
-
-    pilihan = st.selectbox(
-
-        "Pilih metode:",
-
-        list(data_panduan.keys())
-    )
-
-    konten = data_panduan[pilihan]
-
-    st.subheader(konten["Judul"])
-
-    st.text_area(
-
-        "Prosedur",
-
-        konten["Prosedur"],
-
-        height=200
-    )
-
-    st.markdown(
-        f"**Referensi:** {konten['Ref']}"
-    )
-
-# =========================================================
-# K3L & KALIBRASI
-# =========================================================
-elif menu == "K3L & Kalibrasi":
-
-    st.header("🛡️ K3L dan Kalibrasi")
-
-    with st.expander("Jadwal Kalibrasi"):
-
-        df = pd.DataFrame({
-
-            "Alat": [
-                "Neraca 01",
-                "Neraca 02",
-                "pH Meter"
-            ],
-
-            "Status": [
-                "Terkalibrasi",
-                "Perlu Kalibrasi",
-                "Terkalibrasi"
-            ],
-
-            "Tanggal": [
-                "2024-05-01",
-                "2024-06-15",
-                "2024-04-20"
-            ]
-        })
-
-        st.table(df)
-
-    with st.expander("Prosedur Limbah B3"):
-
-        st.warning(
-            "Pastikan limbah cair asam dinetralkan sebelum dibuang."
-        )
+elif menu == "K3L & Limbah":
+    st.header("🛡️ Manajemen K3L & Limbah")
+    st.checkbox("Limbah Logam Berat (Wadah Biru)")
