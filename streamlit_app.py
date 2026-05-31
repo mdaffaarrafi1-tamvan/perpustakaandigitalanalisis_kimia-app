@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import base64
 import streamlit.components.v1 as components
+from streamlit_pdf_viewer import pdf_viewer
 
 # =========================
 # DATABASE FILE MSDS
@@ -108,8 +109,11 @@ elif menu == "MSDS & Safety":
         # =========================
         # PREVIEW PDF
         # =========================
-        st.subheader("📄 Preview PDF")
-        st.pdf(konten_pdf)
+        st.subheader("📄 Preview PDF")       
+        with open(path_file, "rb") as f:
+        pdf_data = f.read()
+
+pdf_viewer(pdf_data)
 # =========================
 # HALAMAN SNI
 # =========================
