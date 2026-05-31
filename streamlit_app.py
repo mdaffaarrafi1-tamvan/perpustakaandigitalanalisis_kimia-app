@@ -7,7 +7,7 @@ import streamlit.components.v1 as components
 # DATABASE FILE MSDS
 # =========================
 database_msds = {
-    "Asam Klorida (HCl)": "Ikan.pdf",
+    "Asam Klorida (HCl)": "Ikan.pdf.pdf",
     "Natrium Hidroksida (NaOH)": "NaOH.pdf",
     "Asam Sulfat (H2SO4)": "H2SO4.pdf",
 }
