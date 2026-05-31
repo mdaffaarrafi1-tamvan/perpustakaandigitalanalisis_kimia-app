@@ -109,38 +109,7 @@ elif menu == "MSDS & Safety":
         # PREVIEW PDF
         # =========================
         st.subheader("📄 Preview PDF")
-
-        try:
-            # Encode PDF ke base64
-            base64_pdf = base64.b64encode(konten_pdf).decode("utf-8")
-
-            # Gunakan EMBED (lebih stabil daripada iframe)
-            pdf_display = f"""
-            <embed
-                src="data:application/pdf;base64,{base64_pdf}"
-                width="100%"
-                height="700px"
-                type="application/pdf">
-            """
-
-            components.html(pdf_display, height=700)
-
-        except Exception as e:
-            st.error(f"Gagal menampilkan preview PDF: {e}")
-
-            st.warning(
-                "Browser mungkin memblokir preview PDF. "
-                "Silakan gunakan tombol download."
-            )
-
-    else:
-        st.error("⚠️ File PDF tidak ditemukan!")
-
-        st.write("Pastikan:")
-        st.write("- Folder bernama `pdf_msds`")
-        st.write("- File PDF ada di dalam folder tersebut")
-        st.write("- Nama file sama persis")
-
+        st.pdf(konten_pdf)
 # =========================
 # HALAMAN SNI
 # =========================
