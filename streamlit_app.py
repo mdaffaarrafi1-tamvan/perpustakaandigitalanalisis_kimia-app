@@ -110,7 +110,7 @@ elif menu == "MSDS & Safety":
         # PREVIEW PDF
         # =========================
         st.subheader("📄 Preview PDF")       
-        pdf_viewer(konten_data)
+        pdf_viewer(konten_pdf)
 # =========================
 # HALAMAN SNI
 # =========================
