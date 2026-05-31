@@ -9,7 +9,7 @@ from streamlit_pdf_viewer import pdf_viewer
 # =========================
 database_msds = {
     "Asam Klorida (HCl)": "Ikan.pdf.pdf",
-    "Natrium Hidroksida (NaOH)": "NaOH.pdf",
+    "Asam Nitrat (HNO3)": "MSDS Nitric Acid.PDF",
     "Asam Sulfat (H2SO4)": "H2SO4.pdf",
 }
 
