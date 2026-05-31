@@ -110,10 +110,7 @@ elif menu == "MSDS & Safety":
         # PREVIEW PDF
         # =========================
         st.subheader("📄 Preview PDF")       
-        with open(path_file, "rb") as f:
-        pdf_data = f.read()
-
-pdf_viewer(pdf_data)
+        pdf_viewer(konten_data)
 # =========================
 # HALAMAN SNI
 # =========================
