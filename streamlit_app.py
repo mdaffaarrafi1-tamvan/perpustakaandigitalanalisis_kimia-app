@@ -141,11 +141,41 @@ elif menu == "SNI & ISO":
 
     st.header("📜 Standar SNI & ISO")
 
-    st.write("""
-    1. SNI 01-3553-2006 — Air Minum Dalam Kemasan  
-    2. ISO 17025 — Sistem Manajemen Laboratorium  
-    3. SNI Analisis Kimia Lingkungan  
-    """)
+     # Folder PDF
+    Folder_pdf = "pdf_SNI"
+
+    # Gabungkan path
+    path_file = os.path.join(Folder_pdf, nama_file_pdf)
+
+    st.info(f"📄 File dipilih: {nama_file_pdf}")
+
+    # =========================
+    # CEK FILE ADA / TIDAK
+    # =========================
+    if os.path.exists(path_file):
+
+        # Baca PDF
+        with open(path_file, "rb") as file_pdf:
+            Konten_pdf = file_pdf.read()
+
+        # =========================
+        # TOMBOL DOWNLOAD
+        # =========================
+        st.download_button(
+            label="📥 Download PDF",
+            data=konten_pdf,
+            file_name=nama_file_pdf,
+            mime="application/pdf",
+            use_container_width=True
+        )
+
+        st.success("✅ File PDF berhasil dimuat")
+
+        # =========================
+        # PREVIEW PDF
+        # =========================
+        st.subheader("📄 Preview PDF")       
+        pdf_viewer(Konten_pdf)
 
 # =========================
 # HALAMAN KALIBRASI
