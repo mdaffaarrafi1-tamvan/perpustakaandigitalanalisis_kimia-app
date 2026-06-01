@@ -41,6 +41,26 @@ database_msds = {
 # =========================
 database_SNI = {
     "SNI-9063-2022_Air&Limbah Mikrobiologi": "SNI-9063-2022_Air&Limbah Mikrobiologi.pdf",
+    "SNI-8990-2021_Air Limbah Fisika_Kimia": "SNI-8990-2021_Air Limbah Fisika_Kimia.pdf",
+    "SNI-7119-3-2017_Udara Ambien (TSP)": "SNI-7119-3-2017_Udara Ambien (TSP).pdf",
+    "SNI-6989-59-2008_Sampling Air Limbah": "SNI-6989-59-2008_Sampling Air Limbah.pdf",
+    "SNI-6989-58-2008_Sampling Air Tanah": "SNI-6989-58-2008_Sampling Air Tanah.pdf",
+    "SNI 19-7119.9-2005_Sampling Udara Ambien": "SNI 19-7119.9-2005_Sampling Udara Ambien.pdf",
+    "SNI 19-7119.2-2005_Sampling Udara Emisi": "SNI 19-7119.2-2005_Sampling Udara Emisi.pdf",
+    "SNI 19-0429-1989_Sampling Cairan": "SNI 19-0429-1989_Sampling Cairan.pdf",
+    "SNI 19-0428-1998_Sampling Padatan": "SNI 19-0428-1998_Sampling Padatan.pdf",
+    "SNI 03-6802-2002_Sampling Tanah ": "SNI 03-6802-2002_Sampling Tanah .pdf",
+    "SNI 19-0428-1998_Sampling Padatan": "SNI 19-0428-1998_Sampling Padatan.pdf",
+    "ISO-10381-1-2002 Soil Quality": "ISO-10381-1-2002.pdf",
+    "ISO-10381-2-2002 Soil Quality": "ISO-10381-2-2002.pdf",
+    "ISO-10381-3-2001 SOil Quality": "ISO-10381-3-2001.pdf",
+    "ISO-10381-4-2003 Soil Quality": "ISO-10381-4-2003.pdf",
+    "ISO-10381-5-2005 Soil Quality": "ISO-10381-5-2005.pdf",
+    "ISO-10381-6-2009 Soil Quality": "ISO-10381-6-2009.pdf",
+    "ISO_IEC_17025_2017_ID Pengujian dan Kalibrasi": "ISO_IEC_17025_2017_ID.pdf",
+    "ISO_IEC_17025_2017_ENG Pengujian dan Kalibrasi": "ISO_IEC_17025_2017_ENG.pdf",
+    "ISO_5667_1_2023_ENG Water Quality": "ISO_5667_1_2023_ENG.pdf",
+    "ISO_5667_1_2020_ENG Water Quality": "ISO_5667_1_2020_ENG.pdf",
 }
 
 # =========================
