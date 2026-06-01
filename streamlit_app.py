@@ -153,7 +153,7 @@ elif menu == "SNI & ISO":
         list(database_SNI.keys())
     )
 
-     Nama_file_pdf = database_SNI[pilihan_bahan]
+    Nama_file_pdf = database_SNI[pilihan_bahan]
     
      # Folder PDF
     Folder_pdf = "pdf_SNI"
