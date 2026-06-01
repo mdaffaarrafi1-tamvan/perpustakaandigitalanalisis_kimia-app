@@ -166,10 +166,10 @@ elif menu == "SNI & ISO":
     # =========================
     # CEK FILE ADA / TIDAK
     # =========================
-    if os.path.exists(path_file):
+    if os.path.exists(Path_file):
 
         # Baca PDF
-        with open(path_file, "rb") as file_pdf:
+        with open(Path_file, "rb") as file_pdf:
             Konten_pdf = file_pdf.read()
 
         # =========================
