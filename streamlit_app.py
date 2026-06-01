@@ -40,7 +40,7 @@ database_msds = {
 # DATABASE FILE SNI/ISO
 # =========================
 database_SNI = {
-    "SNI Tanah": "SNI",
+    "SNI-9063-2022_Air&Limbah Mikrobiologi": "SNI-9063-2022_Air&Limbah Mikrobiologi.pdf",
 }
 
 # =========================
