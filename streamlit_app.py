@@ -90,7 +90,7 @@ if menu == "Home":
 
     col1.metric("Database MSDS", f"{len(database_msds)} File")
     col2.metric("Metode Analisis", "24+")
-    col3.metric("Dokumen SNI", f"{len(database_SNI)} File"))
+    col3.metric("Dokumen SNI", f"{len(database_SNI)} File")
 
 # =========================
 # HALAMAN MSDS
