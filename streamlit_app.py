@@ -37,6 +37,13 @@ database_msds = {
 }
 
 # =========================
+# DATABASE FILE SNI/ISO
+# =========================
+database_SNI = {
+    "SNI Tanah": "SNI",
+}
+
+# =========================
 # KONFIGURASI HALAMAN
 # =========================
 st.set_page_config(
@@ -83,7 +90,7 @@ if menu == "Home":
 
     col1.metric("Database MSDS", f"{len(database_msds)} File")
     col2.metric("Metode Analisis", "24+")
-    col3.metric("Dokumen SNI", "12+")
+    col3.metric("Dokumen SNI", f"{len(database_SNI)} File"))
 
 # =========================
 # HALAMAN MSDS
@@ -141,13 +148,18 @@ elif menu == "SNI & ISO":
 
     st.header("📜 Standar SNI & ISO")
 
+    pilihan_bahan = st.selectbox(
+        "Pilih Bahan Kimia:",
+        list(database_SNI.keys())
+    )
+    
      # Folder PDF
     Folder_pdf = "pdf_SNI"
 
     # Gabungkan path
-    path_file = os.path.join(Folder_pdf, nama_file_pdf)
+    path_file = os.path.join(Folder_pdf, Nama_file_pdf)
 
-    st.info(f"📄 File dipilih: {nama_file_pdf}")
+    st.info(f"📄 File dipilih: {Nama_file_pdf}")
 
     # =========================
     # CEK FILE ADA / TIDAK
@@ -163,8 +175,8 @@ elif menu == "SNI & ISO":
         # =========================
         st.download_button(
             label="📥 Download PDF",
-            data=konten_pdf,
-            file_name=nama_file_pdf,
+            data=Konten_pdf,
+            file_name=Nama_file_pdf,
             mime="application/pdf",
             use_container_width=True
         )
