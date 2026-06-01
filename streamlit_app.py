@@ -152,12 +152,14 @@ elif menu == "SNI & ISO":
         "Pilih Bahan Kimia:",
         list(database_SNI.keys())
     )
+
+     Nama_file_pdf = database_SNI[pilihan_bahan]
     
      # Folder PDF
     Folder_pdf = "pdf_SNI"
 
     # Gabungkan path
-    path_file = os.path.join(Folder_pdf, Nama_file_pdf)
+    Path_file = os.path.join(Folder_pdf, Nama_file_pdf)
 
     st.info(f"📄 File dipilih: {Nama_file_pdf}")
 
