@@ -392,7 +392,7 @@ with st.sidebar:
         ],
         icons=[
             "house-fill",
-            "flask",
+            "exclamation-triangle-fill",
             "file-earmark-text-fill",
             "tools",
             "clipboard-data-fill",
