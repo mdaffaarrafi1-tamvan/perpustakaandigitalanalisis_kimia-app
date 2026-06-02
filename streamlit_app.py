@@ -376,12 +376,12 @@ p,li,label{
 # =========================
 # SIDEBAR
 # =========================
-st.sidebar.title("📚 Navigasi")
+
 
 with st.sidebar:
     
     menu = option_menu(
-        menu_title="📚 Navigasi",
+        menu_title=" Navigasi",
         options=[
             "Home",
             "MSDS & Safety",
@@ -439,16 +439,6 @@ with st.sidebar:
 # HALAMAN HOME
 # =========================
 if menu == "Home":
-
-    st.markdown(
-        '<div class="main-title">🧪 Perpustakaan Digital Analisis Kimia</div>',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        '<div class="sub-title">Sistem Informasi Laboratorium dan Database MSDS</div>',
-        unsafe_allow_html=True
-    )
 
     col1, col2, col3 = st.columns(3)
 
