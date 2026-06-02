@@ -97,8 +97,7 @@ page_title="Perpustakaan Digital Analisis Kimia",
     layout="wide"
 )
     
-st.markdown("""
-<style>
+    st.markdown("""
 <div class='main-title'>
 🧪 Perpustakaan Digital Analisis Kimia
 </div>
