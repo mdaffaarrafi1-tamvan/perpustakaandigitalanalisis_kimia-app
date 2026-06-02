@@ -110,6 +110,8 @@ Sistem Informasi Laboratorium dan Database MSDS
 /* =========================
    BACKGROUND RGB SOFT
 ========================= */
+st.markdown("""
+<style>
 
 .stApp {
     background: linear-gradient(
