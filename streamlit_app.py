@@ -53,10 +53,12 @@ database_msds = {
     "Xylena (C8H12)": "C8H12.PDF",
     "Asam Benzoat (C7H6O2)": "Asam Benzoat.PDF",
     "2-Aminopiridin-asam 3-karboksilat (C6H6N2O2)": "2-Aminopiridin-asam 3-karboksilat.PDF",
-    "Asam Sitrat (C6H8O7 · H2O)": "Asam Sitrat.PDF",
+    "Asam Sitrat Monohidrat (C6H8O7 · H2O)": "Asam Sitrat.PDF",
     "Iodin (I2)": "Iodin.PDF",
     "Toluena (C7H8)": "Toluena.PDF",
     "EDTA (C10H12N2O8*4Na*4H2O )": "EDTA.PDF",
+    "Timbal(II)Asetat Trihidrat(Pb(C2H3O2)2 · 3H2O)": "Pb Asetat.PDF",
+    "Gt Anti-Rb IgG Fluorescein Conjugated Secondary (Fluorescein)": "Fluorescein.PDF",
 }
 
 # =========================
