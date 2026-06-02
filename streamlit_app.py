@@ -188,7 +188,7 @@ if menu == "Home":
     with col1:
         st.markdown("""
         <div class="card">
-            <div class="card-number">150+</div>
+            <div class="card-number">f"{len(database_msds)} +</div>
             <div class="card-title">Database MSDS</div>
         </div>
         """, unsafe_allow_html=True)
@@ -204,7 +204,7 @@ if menu == "Home":
     with col3:
         st.markdown("""
         <div class="card">
-            <div class="card-number">50+</div>
+            <div class="card-number">f"{len(database_SNI)} </div>
             <div class="card-title">Dokumen SNI & ISO</div>
         </div>
         """, unsafe_allow_html=True)
