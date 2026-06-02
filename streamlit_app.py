@@ -228,9 +228,15 @@ elif menu == "MSDS & Safety":
     st.header("🗃️ Database MSDS & Safety")
 
     pilihan_bahan = st.selectbox(
-        "Pilih Bahan Kimia:",
-        list(database_msds.keys())
+        "🔍 Cari MSDS",
+        options=sorted(database_msds.keys()),
+        index=None,
+        placeholder="Ketik nama bahan kimia..."
     )
+
+    if pilihan_bahan is None:
+        st.info("Silakan cari dan pilih bahan kimia.")
+        st.stop()
 
     nama_file_pdf = database_msds[pilihan_bahan]
 
