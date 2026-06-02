@@ -92,6 +92,12 @@ database_SNI = {
 # KONFIGURASI HALAMAN
 # =========================
 
+st.set_page_config(
+    page_title="Library Analisis Kimia",
+    page_icon="🧪",
+    layout="wide"
+)
+
 st.markdown("""
 <div class='main-title'>
 🧪 Perpustakaan Digital Analisis Kimia
@@ -105,24 +111,23 @@ Sistem Informasi Laboratorium dan Database MSDS
 st.markdown("""
 <style>
 
-/* =========================
-   BACKGROUND RGB ANIMATED
-========================= */
+/* =====================================
+   BACKGROUND CYBER LABORATORY
+===================================== */
 
 [data-testid="stAppViewContainer"] {
 
     background: linear-gradient(
         -45deg,
-        #c7d2fe,
-        #bfdbfe,
-        #a5f3fc,
-        #ddd6fe,
-        #d1fae5
+        #0f172a,
+        #1e3a8a,
+        #0f766e,
+        #4338ca,
+        #164e63
     ) !important;
 
-    background-size: 500% 500% !important;
-
-    animation: rgbBackground 18s ease infinite;
+    background-size: 500% 500%;
+    animation: rgbBackground 15s ease infinite;
 }
 
 @keyframes rgbBackground {
@@ -140,22 +145,43 @@ st.markdown("""
     }
 }
 
-/* =========================
+/* =====================================
+   CONTAINER UTAMA
+===================================== */
+
+.main .block-container {
+
+    background: rgba(255,255,255,0.10);
+
+    backdrop-filter: blur(12px);
+
+    border-radius: 25px;
+
+    padding: 2rem;
+
+    margin-top: 1rem;
+}
+
+/* =====================================
    SIDEBAR
-========================= */
+===================================== */
 
 section[data-testid="stSidebar"] {
 
-    background: rgba(255,255,255,0.35);
+    background: rgba(15,23,42,0.80);
 
     backdrop-filter: blur(15px);
 
-    border-right: 1px solid rgba(255,255,255,0.4);
+    border-right: 1px solid rgba(255,255,255,0.15);
 }
 
-/* =========================
-   MAIN TITLE
-========================= */
+section[data-testid="stSidebar"] * {
+    color: white !important;
+}
+
+/* =====================================
+   JUDUL WEBSITE
+===================================== */
 
 .main-title {
 
@@ -163,14 +189,14 @@ section[data-testid="stSidebar"] {
 
     font-size: 3rem;
 
-    font-weight: 700;
+    font-weight: bold;
 
-    color: #0f172a;
-
-    margin-bottom: 10px;
+    color: white;
 
     text-shadow:
-        2px 2px 10px rgba(255,255,255,0.6);
+        0 0 10px rgba(255,255,255,0.4);
+
+    margin-bottom: 10px;
 }
 
 .sub-title {
@@ -179,20 +205,22 @@ section[data-testid="stSidebar"] {
 
     font-size: 1.2rem;
 
-    color: #475569;
+    color: #e2e8f0;
 
     margin-bottom: 40px;
 }
 
-/* =========================
-   CARD STYLE
-========================= */
+/* =====================================
+   CARD STATISTIK
+===================================== */
 
 .card {
 
-    background: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.15);
 
     backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,0.15);
 
     border-radius: 25px;
 
@@ -202,25 +230,23 @@ section[data-testid="stSidebar"] {
 
     min-height: 180px;
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.08);
-
     transition: all 0.3s ease;
-}
 
-/* Hover 3D */
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25);
+}
 
 .card:hover {
 
     transform:
-        translateY(-10px)
+        translateY(-8px)
         scale(1.03);
 
     box-shadow:
-        0 20px 40px rgba(59,130,246,0.20);
+        0 15px 35px rgba(56,189,248,0.35);
 }
 
-/* Angka Card */
+/* ANGKA */
 
 .card-number {
 
@@ -228,41 +254,44 @@ section[data-testid="stSidebar"] {
 
     font-weight: bold;
 
-    color: #2563eb;
+    color: #38bdf8;
 
-    margin-bottom: 15px;
+    text-shadow:
+        0 0 10px rgba(56,189,248,0.6);
 }
 
-/* Judul Card */
+/* JUDUL CARD */
 
 .card-title {
 
+    margin-top: 10px;
+
     font-size: 1.1rem;
 
-    color: #475569;
+    color: white;
 }
 
-/* =========================
+/* =====================================
    BUTTON
-========================= */
+===================================== */
 
 .stButton > button {
 
     width: 100%;
 
-    border-radius: 12px;
+    border-radius: 15px;
 
     border: none;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #3b82f6
-    );
 
     color: white;
 
     font-weight: bold;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4
+    );
 
     transition: all 0.3s ease;
 }
@@ -272,73 +301,67 @@ section[data-testid="stSidebar"] {
     transform: translateY(-2px);
 
     box-shadow:
-        0 10px 20px rgba(37,99,235,0.25);
+        0 10px 20px rgba(6,182,212,0.35);
 }
 
-/* =========================
+/* =====================================
    DOWNLOAD BUTTON
-========================= */
+===================================== */
 
 .stDownloadButton > button {
 
     width: 100%;
 
-    border-radius: 12px;
+    border-radius: 15px;
 
     border: none;
-
-    background: linear-gradient(
-        135deg,
-        #059669,
-        #10b981
-    );
 
     color: white;
 
     font-weight: bold;
+
+    background: linear-gradient(
+        135deg,
+        #10b981,
+        #06b6d4
+    );
 }
 
-/* =========================
-   SELECTBOX
-========================= */
-
-.stSelectbox > div > div {
-
-    border-radius: 15px !important;
-}
-
-/* =========================
-   INPUT BOX
-========================= */
+/* =====================================
+   INPUT DAN SELECTBOX
+===================================== */
 
 .stTextInput input {
 
-    border-radius: 15px !important;
+    border-radius: 12px !important;
 }
 
-/* =========================
-   INFO SUCCESS WARNING
-========================= */
+.stSelectbox > div > div {
+
+    border-radius: 12px !important;
+}
+
+/* =====================================
+   ALERT
+===================================== */
 
 .stAlert {
 
     border-radius: 15px;
 }
 
-/* =========================
-   METRIC
-========================= */
+/* =====================================
+   TEKS
+===================================== */
 
-[data-testid="metric-container"] {
+h1, h2, h3, h4, h5, h6 {
 
-    background: rgba(255,255,255,0.6);
+    color: white !important;
+}
 
-    border-radius: 15px;
+p, li, label {
 
-    padding: 20px;
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,0.05);
+    color: #f8fafc !important;
 }
 
 </style>
