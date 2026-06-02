@@ -91,191 +91,205 @@ database_SNI = {
 # =========================
 # KONFIGURASI HALAMAN
 # =========================
+st.markdown("""
+<div class="main-title">
+🧪 PERPUSTAKAAN DIGITAL ANALISIS KIMIA
+</div>
 
-st.set_page_config(
-    page_title="Library Analisis Kimia",
-    page_icon="🧪",
-    layout="wide"
-)
+<div class="sub-title">
+MSDS • SNI • ISO • K3L • Metode Analisis Laboratorium
+</div>
+""", unsafe_allow_html=True)
 
 st.markdown("""
 <style>
 
-/* =====================================
-   BACKGROUND CYBER LABORATORY
-===================================== */
+/* ==========================================
+   BACKGROUND ANIMASI
+========================================== */
 
-[data-testid="stAppViewContainer"] {
-
+[data-testid="stAppViewContainer"]{
     background: linear-gradient(
         -45deg,
         #0f172a,
         #1e3a8a,
         #0f766e,
         #4338ca,
-        #164e63
-    ) !important;
+        #0f172a
+    );
 
     background-size: 500% 500%;
-    animation: rgbBackground 15s ease infinite;
+
+    animation: animateBG 18s ease infinite;
 }
 
-@keyframes rgbBackground {
-
-    0% {
-        background-position: 0% 50%;
+@keyframes animateBG{
+    0%{
+        background-position:0% 50%;
     }
 
-    50% {
-        background-position: 100% 50%;
+    50%{
+        background-position:100% 50%;
     }
 
-    100% {
-        background-position: 0% 50%;
+    100%{
+        background-position:0% 50%;
     }
 }
 
-/* =====================================
+/* ==========================================
    CONTAINER UTAMA
-===================================== */
+========================================== */
 
-.main .block-container {
+.main .block-container{
 
-    background: rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(15px);
+
+    border-radius:25px;
+
+    padding:2rem;
+
+    margin-top:15px;
+
+    box-shadow:
+        0px 10px 40px rgba(0,0,0,0.25);
+}
+
+/* ==========================================
+   SIDEBAR MODERN
+========================================== */
+
+section[data-testid="stSidebar"]{
+
+    background: rgba(15,23,42,0.92);
+
+    backdrop-filter: blur(20px);
+
+    border-right:1px solid rgba(255,255,255,0.15);
+}
+
+/* Semua tulisan sidebar */
+
+section[data-testid="stSidebar"] *{
+
+    color:white !important;
+}
+
+/* ==========================================
+   RADIO MENU
+========================================== */
+
+div[role="radiogroup"] label{
+
+    background: rgba(255,255,255,0.08);
+
+    padding:12px;
+
+    border-radius:15px;
+
+    margin-bottom:8px;
+
+    transition:0.3s;
+}
+
+div[role="radiogroup"] label:hover{
+
+    background: rgba(56,189,248,0.25);
+
+    transform:translateX(5px);
+}
+
+/* ==========================================
+   JUDUL
+========================================== */
+
+.main-title{
+
+    text-align:center;
+
+    font-size:3rem;
+
+    font-weight:bold;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px rgba(56,189,248,0.7);
+}
+
+.sub-title{
+
+    text-align:center;
+
+    color:#e2e8f0;
+
+    margin-bottom:40px;
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.card{
+
+    background: rgba(255,255,255,0.12);
 
     backdrop-filter: blur(12px);
 
-    border-radius: 25px;
+    border-radius:25px;
 
-    padding: 2rem;
+    padding:30px;
 
-    margin-top: 1rem;
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    transition:0.3s;
 }
 
-/* =====================================
-   SIDEBAR
-===================================== */
-
-section[data-testid="stSidebar"] {
-
-    background: rgba(15,23,42,0.80);
-
-    backdrop-filter: blur(15px);
-
-    border-right: 1px solid rgba(255,255,255,0.15);
-}
-
-section[data-testid="stSidebar"] * {
-    color: white !important;
-}
-
-/* =====================================
-   JUDUL WEBSITE
-===================================== */
-
-.main-title {
-
-    text-align: center;
-
-    font-size: 3rem;
-
-    font-weight: bold;
-
-    color: white;
-
-    text-shadow:
-        0 0 10px rgba(255,255,255,0.4);
-
-    margin-bottom: 10px;
-}
-
-.sub-title {
-
-    text-align: center;
-
-    font-size: 1.2rem;
-
-    color: #e2e8f0;
-
-    margin-bottom: 40px;
-}
-
-/* =====================================
-   CARD STATISTIK
-===================================== */
-
-.card {
-
-    background: rgba(255,255,255,0.15);
-
-    backdrop-filter: blur(15px);
-
-    border: 1px solid rgba(255,255,255,0.15);
-
-    border-radius: 25px;
-
-    padding: 30px;
-
-    text-align: center;
-
-    min-height: 180px;
-
-    transition: all 0.3s ease;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.25);
-}
-
-.card:hover {
+.card:hover{
 
     transform:
         translateY(-8px)
         scale(1.03);
 
     box-shadow:
-        0 15px 35px rgba(56,189,248,0.35);
+        0 0 25px rgba(56,189,248,0.35);
 }
 
-/* ANGKA */
+.card-number{
 
-.card-number {
+    font-size:3rem;
 
-    font-size: 3rem;
+    font-weight:bold;
 
-    font-weight: bold;
-
-    color: #38bdf8;
-
-    text-shadow:
-        0 0 10px rgba(56,189,248,0.6);
+    color:#38bdf8;
 }
 
-/* JUDUL CARD */
+.card-title{
 
-.card-title {
-
-    margin-top: 10px;
-
-    font-size: 1.1rem;
-
-    color: white;
+    color:white;
 }
 
-/* =====================================
-   BUTTON
-===================================== */
+/* ==========================================
+   BUTTON MODERN
+========================================== */
 
-.stButton > button {
+.stButton > button{
 
-    width: 100%;
+    width:100%;
 
-    border-radius: 15px;
+    border:none;
 
-    border: none;
+    border-radius:15px;
 
-    color: white;
+    padding:12px;
 
-    font-weight: bold;
+    font-weight:bold;
+
+    color:white;
 
     background: linear-gradient(
         135deg,
@@ -283,75 +297,76 @@ section[data-testid="stSidebar"] * {
         #06b6d4
     );
 
-    transition: all 0.3s ease;
-}
-
-.stButton > button:hover {
-
-    transform: translateY(-2px);
+    transition:0.3s;
 
     box-shadow:
-        0 10px 20px rgba(6,182,212,0.35);
+        0 0 15px rgba(6,182,212,0.25);
 }
 
-/* =====================================
+.stButton > button:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
+    box-shadow:
+        0 0 25px rgba(6,182,212,0.5);
+}
+
+/* ==========================================
    DOWNLOAD BUTTON
-===================================== */
+========================================== */
 
-.stDownloadButton > button {
+.stDownloadButton > button{
 
-    width: 100%;
+    width:100%;
 
-    border-radius: 15px;
+    border:none;
 
-    border: none;
+    border-radius:15px;
 
-    color: white;
+    font-weight:bold;
 
-    font-weight: bold;
+    color:white;
 
     background: linear-gradient(
         135deg,
         #10b981,
         #06b6d4
     );
+
+    box-shadow:
+        0 0 15px rgba(16,185,129,0.3);
 }
 
-/* =====================================
-   INPUT DAN SELECTBOX
-===================================== */
+/* ==========================================
+   INPUT
+========================================== */
 
-.stTextInput input {
+.stTextInput input{
 
-    border-radius: 12px !important;
+    border-radius:15px !important;
+
+    border:1px solid rgba(255,255,255,0.3);
 }
 
-.stSelectbox > div > div {
+.stSelectbox > div > div{
 
-    border-radius: 12px !important;
+    border-radius:15px !important;
 }
 
-/* =====================================
-   ALERT
-===================================== */
+/* ==========================================
+   HEADER TEXT
+========================================== */
 
-.stAlert {
+h1,h2,h3,h4,h5,h6{
 
-    border-radius: 15px;
+    color:white !important;
 }
 
-/* =====================================
-   TEKS
-===================================== */
+p,li,label{
 
-h1, h2, h3, h4, h5, h6 {
-
-    color: white !important;
-}
-
-p, li, label {
-
-    color: #f8fafc !important;
+    color:#f1f5f9 !important;
 }
 
 </style>
@@ -363,14 +378,14 @@ p, li, label {
 st.sidebar.title("📚 Navigasi")
 
 menu = st.sidebar.radio(
-    "Pilih Menu:",
+    "Pilih Menu",
     [
-        "Home",
-        "MSDS & Safety",
-        "SNI & ISO",
-        "Kalibrasi Alat",
-        "Panduan Analisis",
-        "K3L & Limbah"
+        "🏠 Home",
+        "🧪 MSDS & Safety",
+        "📜 SNI & ISO",
+        "⚖️ Kalibrasi Alat",
+        "🔬 Panduan Analisis",
+        "🛡️ K3L & Limbah"
     ]
 )
 
