@@ -453,8 +453,8 @@ if menu == "Home":
     with col2:
         st.markdown("""
         <div class="card">
-            <div class="card-number">{len(database_msds)}+</div>
-            <div class="card-title">Database MSDS</div>
+            <div class="card-number">0+</div>
+            <div class="card-title">BANGKE</div>
         </div>
         """, unsafe_allow_html=True)
     
