@@ -99,16 +99,6 @@ st.set_page_config(
 )
 
 st.markdown("""
-<div class='main-title'>
-🧪 Perpustakaan Digital Analisis Kimia
-</div>
-
-<div class='sub-title'>
-Sistem Informasi Laboratorium dan Database MSDS
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown("""
 <style>
 
 /* =====================================
