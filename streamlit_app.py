@@ -91,11 +91,6 @@ database_SNI = {
 # =========================
 # KONFIGURASI HALAMAN
 # =========================
-st.set_page_config(
-    page_title="Perpustakaan Digital Analisis Kimia",
-    page_icon="🧪",
-    layout="wide"
-)
 
 st.markdown("""
 <div class='main-title'>
