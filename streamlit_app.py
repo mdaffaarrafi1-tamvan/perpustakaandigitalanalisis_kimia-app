@@ -92,11 +92,11 @@ database_SNI = {
 # KONFIGURASI HALAMAN
 # =========================
 st.set_page_config(
-page_title="Perpustakaan Digital Analisis Kimia",
+    page_title="Perpustakaan Digital Analisis Kimia",
     page_icon="🧪",
     layout="wide"
 )
-    
+
 st.markdown("""
 <div class='main-title'>
 🧪 Perpustakaan Digital Analisis Kimia
@@ -107,11 +107,11 @@ Sistem Informasi Laboratorium dan Database MSDS
 </div>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
 /* =========================
    BACKGROUND RGB SOFT
 ========================= */
-st.markdown("""
-<style>
 
 .stApp {
     background: linear-gradient(
