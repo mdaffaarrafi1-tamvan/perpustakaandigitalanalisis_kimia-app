@@ -380,12 +380,12 @@ st.sidebar.title("📚 Navigasi")
 menu = st.sidebar.radio(
     "Pilih Menu:",
     [
-        "🏠Home",
-        "🧪MSDS & Safety",
-        "📜SNI & ISO",
-        "⚖️Kalibrasi Alat",
-        "🔬Panduan Analisis",
-        "🛡️K3L & Limbah"
+        "Home",
+        "MSDS & Safety",
+        "SNI & ISO",
+        "Kalibrasi Alat",
+        "Panduan Analisis",
+        "K3L & Limbah"
     ]
 )
 
