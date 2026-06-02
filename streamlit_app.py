@@ -99,9 +99,6 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-st.markdown("""
-<style>
-
 /* Background */
 .stApp{
     background: linear-gradient(
