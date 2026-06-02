@@ -98,6 +98,7 @@ page_title="Perpustakaan Digital Analisis Kimia",
 )
     
 st.markdown("""
+<style>
 <div class='main-title'>
 🧪 Perpustakaan Digital Analisis Kimia
 </div>
