@@ -283,9 +283,15 @@ elif menu == "SNI & ISO":
     st.header("📜 Standar SNI & ISO")
 
     pilihan_bahan = st.selectbox(
-        "Pilih Bahan Kimia:",
-        list(database_SNI.keys())
+        "🔍 Cari SNI/ISO",
+        options=sorted(database_SNI.keys()),
+        index=None,
+        placeholder="Ketik nama bahan kimia..."
     )
+
+    if pilihan_bahan is None:
+        st.info("Silakan cari dan pilih bahan kimia.")
+        st.stop()
 
     Nama_file_pdf = database_SNI[pilihan_bahan]
     
