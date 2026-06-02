@@ -109,26 +109,29 @@ Sistem Informasi Laboratorium dan Database MSDS
 
 st.markdown("""
 <style>
+
 /* =========================
-   BACKGROUND RGB SOFT
+   BACKGROUND RGB ANIMATED
 ========================= */
 
-.stApp {
+[data-testid="stAppViewContainer"] {
+
     background: linear-gradient(
         -45deg,
-        #e8eef7,
-        #dbeafe,
-        #e0f2fe,
-        #eef2ff,
-        #f8fafc
-    );
+        #c7d2fe,
+        #bfdbfe,
+        #a5f3fc,
+        #ddd6fe,
+        #d1fae5
+    ) !important;
 
-    background-size: 400% 400%;
-    animation: gradientBG 20s ease infinite;
+    background-size: 500% 500% !important;
+
+    animation: rgbBackground 18s ease infinite;
 }
 
-/* Animasi Background */
-@keyframes gradientBG {
+@keyframes rgbBackground {
+
     0% {
         background-position: 0% 50%;
     }
@@ -147,32 +150,47 @@ st.markdown("""
 ========================= */
 
 section[data-testid="stSidebar"] {
-    background: rgba(255,255,255,0.25);
+
+    background: rgba(255,255,255,0.35);
+
     backdrop-filter: blur(15px);
-    border-right: 1px solid rgba(255,255,255,0.3);
+
+    border-right: 1px solid rgba(255,255,255,0.4);
 }
 
 /* =========================
-   JUDUL
+   MAIN TITLE
 ========================= */
 
 .main-title {
+
     text-align: center;
+
     font-size: 3rem;
+
     font-weight: 700;
+
     color: #0f172a;
+
     margin-bottom: 10px;
+
+    text-shadow:
+        2px 2px 10px rgba(255,255,255,0.6);
 }
 
 .sub-title {
+
     text-align: center;
-    font-size: 1.3rem;
+
+    font-size: 1.2rem;
+
     color: #475569;
+
     margin-bottom: 40px;
 }
 
 /* =========================
-   CARD
+   CARD STYLE
 ========================= */
 
 .card {
@@ -187,25 +205,27 @@ section[data-testid="stSidebar"] {
 
     text-align: center;
 
+    min-height: 180px;
+
     box-shadow:
-        0 8px 25px rgba(0,0,0,0.08);
+        0 10px 30px rgba(0,0,0,0.08);
 
     transition: all 0.3s ease;
 }
 
-/* Hover 3D ringan */
+/* Hover 3D */
 
 .card:hover {
 
     transform:
-        translateY(-8px)
-        scale(1.02);
+        translateY(-10px)
+        scale(1.03);
 
     box-shadow:
-        0 15px 35px rgba(59,130,246,0.15);
+        0 20px 40px rgba(59,130,246,0.20);
 }
 
-/* Angka */
+/* Angka Card */
 
 .card-number {
 
@@ -215,7 +235,7 @@ section[data-testid="stSidebar"] {
 
     color: #2563eb;
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 /* Judul Card */
@@ -233,6 +253,8 @@ section[data-testid="stSidebar"] {
 
 .stButton > button {
 
+    width: 100%;
+
     border-radius: 12px;
 
     border: none;
@@ -245,9 +267,9 @@ section[data-testid="stSidebar"] {
 
     color: white;
 
-    font-weight: 600;
+    font-weight: bold;
 
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .stButton > button:hover {
@@ -255,28 +277,55 @@ section[data-testid="stSidebar"] {
     transform: translateY(-2px);
 
     box-shadow:
-        0 8px 20px rgba(59,130,246,0.25);
+        0 10px 20px rgba(37,99,235,0.25);
 }
 
 /* =========================
-   INPUT
+   DOWNLOAD BUTTON
 ========================= */
 
-.stTextInput input,
-.stSelectbox div[data-baseweb="select"] {
+.stDownloadButton > button {
 
-    border-radius: 12px !important;
+    width: 100%;
 
-    background: rgba(255,255,255,0.8) !important;
+    border-radius: 12px;
+
+    border: none;
+
+    background: linear-gradient(
+        135deg,
+        #059669,
+        #10b981
+    );
+
+    color: white;
+
+    font-weight: bold;
 }
 
 /* =========================
-   ALERT
+   SELECTBOX
 ========================= */
 
-.stSuccess,
-.stInfo,
-.stWarning {
+.stSelectbox > div > div {
+
+    border-radius: 15px !important;
+}
+
+/* =========================
+   INPUT BOX
+========================= */
+
+.stTextInput input {
+
+    border-radius: 15px !important;
+}
+
+/* =========================
+   INFO SUCCESS WARNING
+========================= */
+
+.stAlert {
 
     border-radius: 15px;
 }
@@ -287,11 +336,11 @@ section[data-testid="stSidebar"] {
 
 [data-testid="metric-container"] {
 
-    background: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.6);
 
     border-radius: 15px;
 
-    padding: 15px;
+    padding: 20px;
 
     box-shadow:
         0 5px 15px rgba(0,0,0,0.05);
@@ -337,26 +386,26 @@ if menu == "Home":
     with col1:
         st.markdown(f"""
         <div class="card">
-        <div class="card-number">{len(database_msds)}+</div>
-        <div class="card-title">Database MSDS</div>
-    </div>
-    """, unsafe_allow_html=True)
+            <div class="card-number">{len(database_msds)}+</div>
+            <div class="card-title">Database MSDS</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
         <div class="card">
-        <div class="card-number">{len(database_msds)}+</div>
-        <div class="card-title">Database MSDS</div>
-    </div>
-    """, unsafe_allow_html=True)
+            <div class="card-number">{len(database_msds)}+</div>
+            <div class="card-title">Database MSDS</div>
+        </div>
+        """, unsafe_allow_html=True)
     
     with col3:
         st.markdown(f"""
         <div class="card">
-        <div class="card-number">{len(database_SNI)}+</div>
-        <div class="card-title">Database SNI/ISO</div>
-    </div>
-    """, unsafe_allow_html=True)
+            <div class="card-number">{len(database_SNI)}+</div>
+            <div class="card-title">Database SNI/ISO</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("---")
 
