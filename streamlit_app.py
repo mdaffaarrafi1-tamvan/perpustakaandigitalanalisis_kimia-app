@@ -99,78 +99,161 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* Background utama */
-.stApp {
-    background: linear-gradient(135deg, #f4f7fc 0%, #e8eef7 100%);
+st.markdown("""
+<style>
+
+/* Background */
+.stApp{
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #111827,
+        #1e293b
+    );
 }
 
-/* Judul utama */
-.main-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #0d47a1;
-    text-align: center;
-    margin-bottom: 10px;
+/* Judul */
+.main-title{
+    text-align:center;
+    font-size:3rem;
+    font-weight:bold;
+    color:white;
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #ff00ff,
+        0 0 40px #00ffff;
 }
 
-/* Subjudul */
-.sub-title {
-    font-size: 1.2rem;
-    color: #555;
-    text-align: center;
-    margin-bottom: 40px;
+/* Card 3D RGB */
+.card{
+    position:relative;
+    padding:30px;
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.4);
+
+    transition:0.4s;
+    overflow:hidden;
 }
 
-/* Card statistik */
-.card {
-    background-color: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: 0.3s;
+/* RGB Border */
+.card::before{
+    content:"";
+    position:absolute;
+
+    top:-2px;
+    left:-2px;
+    right:-2px;
+    bottom:-2px;
+
+    border-radius:25px;
+
+    background:linear-gradient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        lime,
+        cyan,
+        blue,
+        violet,
+        red
+    );
+
+    background-size:400%;
+
+    z-index:-1;
+
+    animation:rgb 8s linear infinite;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+@keyframes rgb{
+    0%{
+        background-position:0% 50%;
+    }
+    100%{
+        background-position:400% 50%;
+    }
 }
 
-.card-number {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #1976d2;
+/* Hover 3D */
+.card:hover{
+    transform:
+        translateY(-12px)
+        rotateX(5deg);
+
+    box-shadow:
+        0 0 20px #00ffff,
+        0 0 40px #ff00ff,
+        0 0 60px #00ffff;
 }
 
-.card-title {
-    font-size: 1rem;
-    color: #666;
+/* Angka */
+.card-number{
+    font-size:3rem;
+    font-weight:bold;
+    text-align:center;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px #00ffff,
+        0 0 20px #ff00ff;
+}
+
+/* Judul card */
+.card-title{
+    text-align:center;
+    color:#d1d5db;
+    font-size:1.2rem;
 }
 
 /* Sidebar */
-section[data-testid="stSidebar"] {
-    background-color: #0d47a1;
+section[data-testid="stSidebar"]{
+    background:#0f172a;
 }
 
-section[data-testid="stSidebar"] * {
-    color: white !important;
+/* Sidebar text */
+section[data-testid="stSidebar"] *{
+    color:white !important;
 }
 
 /* Tombol */
-.stButton > button {
-    border-radius: 10px;
-    background-color: #1565c0;
-    color: white;
-    border: none;
-    font-weight: bold;
+.stButton > button{
+    border-radius:15px;
+    border:none;
+
+    color:white;
+
+    background:linear-gradient(
+        45deg,
+        #ff00ff,
+        #00ffff
+    );
+
+    box-shadow:
+        0 0 15px #00ffff;
+
+    transition:0.3s;
 }
 
-.stButton > button:hover {
-    background-color: #0d47a1;
+.stButton > button:hover{
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 20px #00ffff,
+        0 0 40px #ff00ff;
 }
 
 /* Selectbox */
-.stSelectbox > div > div {
-    border-radius: 10px;
+.stSelectbox div[data-baseweb="select"]{
+    background:rgba(255,255,255,0.08);
+    border-radius:15px;
 }
 
 </style>
@@ -214,25 +297,25 @@ if menu == "Home":
         st.markdown(f"""
         <div class="card">
         <div class="card-number">{len(database_msds)}+</div>
-        <div class="card-title">Dokumen SNI & ISO</div>
+        <div class="card-title">Database MSDS</div>
     </div>
     """, unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
         <div class="card">
-            <div class="card-number">+</div>
-            <div class="card-title">Metode Analisis</div>
-        </div>
-        """, unsafe_allow_html=True)
-
+        <div class="card-number">{len(database_msds)}+</div>
+        <div class="card-title">Database MSDS</div>
+    </div>
+    """, unsafe_allow_html=True)
+    
     with col3:
         st.markdown(f"""
         <div class="card">
-            <div class="card-number">{len(database_SNI)}+</div>
-            <div class="card-title">Dokumen SNI & ISO</div>
-        </div>
-        """, unsafe_allow_html=True)
+        <div class="card-number">{len(database_SNI)}+</div>
+        <div class="card-title">Database SNI/ISO</div>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("---")
 
