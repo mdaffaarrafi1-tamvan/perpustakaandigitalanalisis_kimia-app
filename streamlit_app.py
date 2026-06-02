@@ -11,7 +11,7 @@ database_msds = {
     "Asam Klorida (HCl)": "Ikan.pdf.pdf",
     "Asam Nitrat (HNO3)": "MSDS Nitric Acid.PDF",
     "Asam Sulfat (H2SO4)": "Asam sulfat.PDF",
-    "Asam Asetat (H2SO4)": "asam asetat.PDF",
+    "Asam Asetat (CH3COOH)": "asam asetat.PDF",
     "Asam Salisilat (C2H6O3)": "MSDS Asam Salisilat - SAFC.PDF",
     "Asam Oksalat (H2C2O4)": "MSDS ASAM OKSALAT.pdf",
     "Asam Flourida (HF)": "MSDS Hydroflouric Acid.pdf",
