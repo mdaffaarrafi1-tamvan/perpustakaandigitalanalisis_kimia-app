@@ -378,7 +378,7 @@ p,li,label{
 st.sidebar.title("📚 Navigasi")
 
 menu = st.sidebar.radio(
-    "Pilih Menu",
+    "Pilih Menu:",
     [
         "🏠 Home",
         "🧪 MSDS & Safety",
