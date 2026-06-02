@@ -3,6 +3,7 @@ import os
 import base64
 import streamlit.components.v1 as components
 from streamlit_pdf_viewer import pdf_viewer
+from streamlit_option_menu import option_menu
 
 # =========================
 # DATABASE FILE MSDS
@@ -377,18 +378,62 @@ p,li,label{
 # =========================
 st.sidebar.title("📚 Navigasi")
 
-menu = st.sidebar.radio(
-    "Pilih Menu:",
-    [
-        "Home",
-        "MSDS & Safety",
-        "SNI & ISO",
-        "Kalibrasi Alat",
-        "Panduan Analisis",
-        "K3L & Limbah"
-    ]
-)
+with st.sidebar:
+    
+    menu = option_menu(
+        menu_title="📚 Navigasi",
+        options=[
+            "Home",
+            "MSDS & Safety",
+            "SNI & ISO",
+            "Kalibrasi Alat",
+            "Panduan Analisis",
+            "K3L & Limbah"
+        ],
+        icons=[
+            "house-fill",
+            "flask",
+            "file-earmark-text-fill",
+            "tools",
+            "clipboard-data-fill",
+            "shield-check"
+        ],
+        menu_icon="mortarboard-fill",
+        default_index=0,
+        styles={
+            "container": {
+                "padding": "10px",
+                "background-color": "#0f172a",
+                "border-radius": "15px"
+            },
 
+            "icon": {
+                "color": "#38bdf8",
+                "font-size": "18px"
+            },
+
+            "menu-title": {
+                "color": "white",
+                "font-size": "20px",
+                "font-weight": "bold"
+            },
+
+            "nav-link": {
+                "font-size": "15px",
+                "text-align": "left",
+                "padding": "12px",
+                "margin": "5px",
+                "border-radius": "12px",
+                "--hover-color": "#1e293b",
+            },
+
+            "nav-link-selected": {
+                "background": "linear-gradient(135deg,#2563eb,#06b6d4)",
+                "color": "white",
+                "font-weight": "bold",
+            },
+        }
+    )
 
 # =========================
 # HALAMAN HOME
