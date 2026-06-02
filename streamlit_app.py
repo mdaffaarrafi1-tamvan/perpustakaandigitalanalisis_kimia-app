@@ -71,6 +71,85 @@ st.set_page_config(
     page_icon="🧪",
     layout="wide"
 )
+st.markdown("""
+<style>
+
+/* Background utama */
+.stApp {
+    background: linear-gradient(135deg, #f4f7fc 0%, #e8eef7 100%);
+}
+
+/* Judul utama */
+.main-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0d47a1;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Subjudul */
+.sub-title {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Card statistik */
+.card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1976d2;
+}
+
+.card-title {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #0d47a1;
+}
+
+section[data-testid="stSidebar"] * {
+    color: white !important;
+}
+
+/* Tombol */
+.stButton > button {
+    border-radius: 10px;
+    background-color: #1565c0;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+.stButton > button:hover {
+    background-color: #0d47a1;
+}
+
+/* Selectbox */
+.stSelectbox > div > div {
+    border-radius: 10px;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 # =========================
 # SIDEBAR
@@ -94,24 +173,53 @@ menu = st.sidebar.radio(
 # =========================
 if menu == "Home":
 
-    st.title("🧪 Perpustakaan Digital Analisis Kimia")
-    st.subheader("Selamat Datang, Analis Laboratorium")
+    st.markdown(
+        '<div class="main-title">🧪 Perpustakaan Digital Analisis Kimia</div>',
+        unsafe_allow_html=True
+    )
 
-    st.write("""
-    Aplikasi ini digunakan untuk:
-    - Melihat dokumen MSDS
-    - Download PDF bahan kimia
-    - Panduan analisis laboratorium
-    - Standar SNI & ISO
-    - Informasi K3L laboratorium
-    """)
+    st.markdown(
+        '<div class="sub-title">Sistem Informasi Laboratorium dan Database MSDS</div>',
+        unsafe_allow_html=True
+    )
 
     col1, col2, col3 = st.columns(3)
 
-    col1.metric("Database MSDS", f"{len(database_msds)} File")
-    col2.metric("Metode Analisis", "24+")
-    col3.metric("Dokumen SNI", f"{len(database_SNI)} File")
+    with col1:
+        st.markdown("""
+        <div class="card">
+            <div class="card-number">150+</div>
+            <div class="card-title">Database MSDS</div>
+        </div>
+        """, unsafe_allow_html=True)
 
+    with col2:
+        st.markdown("""
+        <div class="card">
+            <div class="card-number">24+</div>
+            <div class="card-title">Metode Analisis</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col3:
+        st.markdown("""
+        <div class="card">
+            <div class="card-number">50+</div>
+            <div class="card-title">Dokumen SNI & ISO</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    st.info("""
+    📚 Fitur yang tersedia:
+    
+    - Database MSDS bahan kimia
+    - Download dokumen keselamatan kerja
+    - Panduan analisis gravimetri dan titrimetri
+    - Referensi SNI dan ISO 17025
+    - Panduan K3L laboratorium
+    """)
 # =========================
 # HALAMAN MSDS
 # =========================
