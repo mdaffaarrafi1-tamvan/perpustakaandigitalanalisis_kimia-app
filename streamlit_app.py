@@ -186,7 +186,7 @@ if menu == "Home":
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown("""
+        st.markdown(f"""
         <div class="card">
         <div class="card-number">{len(database_SNI)}+</div>
         <div class="card-title">Dokumen SNI & ISO</div>
@@ -202,7 +202,7 @@ if menu == "Home":
         """, unsafe_allow_html=True)
 
     with col3:
-        st.markdown("""
+        st.markdown(f"""
         <div class="card">
             <div class="card-number">{len(database_SNI)}+</div>
             <div class="card-title">Dokumen SNI & ISO</div>
