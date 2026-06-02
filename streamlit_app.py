@@ -92,165 +92,202 @@ database_SNI = {
 # KONFIGURASI HALAMAN
 # =========================
 st.set_page_config(
-    page_title="Library Analisis Kimia",
-    page_icon="🧪",
-    layout="wide"
-)
 st.markdown("""
-<style>
+<div class='main-title'>
+🧪 Perpustakaan Digital Analisis Kimia
+</div>
 
-/* Background */
-.stApp{
+<div class='sub-title'>
+Sistem Informasi Laboratorium dan Database MSDS
+</div>
+""", unsafe_allow_html=True)
+
+/* =========================
+   BACKGROUND RGB SOFT
+========================= */
+
+.stApp {
     background: linear-gradient(
-        135deg,
-        #0f172a,
-        #111827,
-        #1e293b
+        -45deg,
+        #e8eef7,
+        #dbeafe,
+        #e0f2fe,
+        #eef2ff,
+        #f8fafc
     );
+
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
 }
 
-/* Judul */
-.main-title{
-    text-align:center;
-    font-size:3rem;
-    font-weight:bold;
-    color:white;
-    text-shadow:
-        0 0 10px #00ffff,
-        0 0 20px #ff00ff,
-        0 0 40px #00ffff;
+/* Animasi Background */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-/* Card 3D RGB */
-.card{
-    position:relative;
-    padding:30px;
-    border-radius:25px;
+/* =========================
+   SIDEBAR
+========================= */
 
-    background:rgba(255,255,255,0.08);
+section[data-testid="stSidebar"] {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
 
-    backdrop-filter:blur(15px);
+/* =========================
+   JUDUL
+========================= */
+
+.main-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.sub-title {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #475569;
+    margin-bottom: 40px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+
+    background: rgba(255,255,255,0.65);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 25px;
+
+    padding: 30px;
+
+    text-align: center;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.4);
+        0 8px 25px rgba(0,0,0,0.08);
 
-    transition:0.4s;
-    overflow:hidden;
+    transition: all 0.3s ease;
 }
 
-/* RGB Border */
-.card::before{
-    content:"";
-    position:absolute;
+/* Hover 3D ringan */
 
-    top:-2px;
-    left:-2px;
-    right:-2px;
-    bottom:-2px;
+.card:hover {
 
-    border-radius:25px;
-
-    background:linear-gradient(
-        45deg,
-        red,
-        orange,
-        yellow,
-        lime,
-        cyan,
-        blue,
-        violet,
-        red
-    );
-
-    background-size:400%;
-
-    z-index:-1;
-
-    animation:rgb 8s linear infinite;
-}
-
-@keyframes rgb{
-    0%{
-        background-position:0% 50%;
-    }
-    100%{
-        background-position:400% 50%;
-    }
-}
-
-/* Hover 3D */
-.card:hover{
     transform:
-        translateY(-12px)
-        rotateX(5deg);
+        translateY(-8px)
+        scale(1.02);
 
     box-shadow:
-        0 0 20px #00ffff,
-        0 0 40px #ff00ff,
-        0 0 60px #00ffff;
+        0 15px 35px rgba(59,130,246,0.15);
 }
 
 /* Angka */
-.card-number{
-    font-size:3rem;
-    font-weight:bold;
-    text-align:center;
 
-    color:white;
+.card-number {
 
-    text-shadow:
-        0 0 10px #00ffff,
-        0 0 20px #ff00ff;
+    font-size: 3rem;
+
+    font-weight: bold;
+
+    color: #2563eb;
+
+    margin-bottom: 10px;
 }
 
-/* Judul card */
-.card-title{
-    text-align:center;
-    color:#d1d5db;
-    font-size:1.2rem;
+/* Judul Card */
+
+.card-title {
+
+    font-size: 1.1rem;
+
+    color: #475569;
 }
 
-/* Sidebar */
-section[data-testid="stSidebar"]{
-    background:#0f172a;
-}
+/* =========================
+   BUTTON
+========================= */
 
-/* Sidebar text */
-section[data-testid="stSidebar"] *{
-    color:white !important;
-}
+.stButton > button {
 
-/* Tombol */
-.stButton > button{
-    border-radius:15px;
-    border:none;
+    border-radius: 12px;
 
-    color:white;
+    border: none;
 
-    background:linear-gradient(
-        45deg,
-        #ff00ff,
-        #00ffff
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
     );
 
-    box-shadow:
-        0 0 15px #00ffff;
+    color: white;
 
-    transition:0.3s;
+    font-weight: 600;
+
+    transition: 0.3s;
 }
 
-.stButton > button:hover{
-    transform:scale(1.05);
+.stButton > button:hover {
+
+    transform: translateY(-2px);
 
     box-shadow:
-        0 0 20px #00ffff,
-        0 0 40px #ff00ff;
+        0 8px 20px rgba(59,130,246,0.25);
 }
 
-/* Selectbox */
-.stSelectbox div[data-baseweb="select"]{
-    background:rgba(255,255,255,0.08);
-    border-radius:15px;
+/* =========================
+   INPUT
+========================= */
+
+.stTextInput input,
+.stSelectbox div[data-baseweb="select"] {
+
+    border-radius: 12px !important;
+
+    background: rgba(255,255,255,0.8) !important;
+}
+
+/* =========================
+   ALERT
+========================= */
+
+.stSuccess,
+.stInfo,
+.stWarning {
+
+    border-radius: 15px;
+}
+
+/* =========================
+   METRIC
+========================= */
+
+[data-testid="metric-container"] {
+
+    background: rgba(255,255,255,0.7);
+
+    border-radius: 15px;
+
+    padding: 15px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.05);
 }
 
 </style>
