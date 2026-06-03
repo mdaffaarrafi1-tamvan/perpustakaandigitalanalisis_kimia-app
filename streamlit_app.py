@@ -777,7 +777,7 @@ timbang sebagai (W2)
 Hitung kadar sulfat (%)
 
 """)
-            elif sub_metode == "Penentuan Kadar Besi Dalam FAS":
+        elif sub_metode == "Penentuan Kadar Besi Dalam FAS":
 
             st.subheader("🔥 Penentuan Kadar Fe dalam garam besi (II)")
 
