@@ -747,62 +747,96 @@ Uji sempurna dengan setetes larutan barium
 
 ⬇️
 
-Aging selama 1 jam 
+Aging selama 1 jam dengan api yang kecil
 
 ⬇️
 
-Ulangi step diatas hingga mendapatkan bobot konstan
+Endapan pada piala gelas di cuci dengan air panas, untuk menghilang kan Cl-
 
 ⬇️
 
-Timbang dan catat sebagai (W2)
+Saring endapan menggunakan kertas saring dan corong kaca, 
+lalu bilas hingga endapan bebas dari pengotor 
 
 ⬇️
 
-Menghitung Kadar Abu (%)
+Uji endapan dengan tetesan terakhir nya di beri ( Perak Nitrat dengan Asam Nitrat )
+
+⬇️
+
+jika sudah bebas pengotor, beri setetes asam sulfat, lalu masukkan ke cawan,
+lalu keringkan diatas bunsen, lalu pijarkan menggunakan meker
+
+⬇️
+
+Panaskan dalam tanur pada suhu 750˚C hingga bobot tetap,
+timbang sebagai (W2)
+
+⬇️
+
+Hitung kadar sulfat (%)
+
 """)
             elif sub_metode == "Penentuan Kadar Besi Dalam FAS":
 
-            st.subheader("🔥 Penentuan Kadar Abu")
+            st.subheader("🔥 Penentuan Kadar Fe dalam garam besi (II)")
 
             st.markdown("""
 ### Cara Kerja
 
-Masukkan cawan ke tanur, lalu panaskan dengan suhu
-± 550˚C selama 1 jam
+Timbang 0,25 g smapel Ferro Ammonium Sulfat (FAS)
 
 ⬇️
 
-Dinginkan ( Desikator ), lalu timbang bobot kosong 
-sampai bobot tetap, catat sebagai (W0)
+Masukkan ke piala gelas 400 mL, larutkan 25 mL air suling.
+tambahkan 1 tetes Asam Sulfat
 
 ⬇️
 
-Timbang sampel 3 s/d 5 gram ke cawan,
-catat sebagai (W1)
+Letakkan diatas bunsen lalu tambahkan Asam Nitrat 20 tetes,
+tambahkan air suling hingga tepat 200 mL, lalu panaskan
 
 ⬇️
 
-Sampel dalam cawan (W1) di arangkan diatas bunsen, abukan 
-dengan melakukan pemijaran menggunakan maker
+Uji larutan dengan setetes ammonia untuk mengetahui 
+besi (ll) sudah teroksidasi menjadi besi (lll)
 
 ⬇️
 
-Panaskan sampel dengan tanur pada suhu 
-± 550˚C selama 1 jam, dinginkan ( Desikator )
-selama 30 menit
+Jika oksidasi sudah sempurna, panaskan hingga sebelum mendidih
 
 ⬇️
 
-Ulangi step diatas hingga mendapatkan bobot konstan
+Tambahkan ammonia 7 drop hingga terbentuk endapan, setelah itu diamkan
+hingga mengendap
 
 ⬇️
 
-Timbang dan catat sebagai (W2)
+Uji sempurna dengan setetes ammonia, jika tidak terbentuk endapan maka 
+pengendapan sudah sempurna 
 
 ⬇️
 
-Menghitung Kadar Abu (%)
+Aging selama 30 sampai 40 menit dengan api kecil
+
+⬇️
+
+Cairan disaring menggunakan kertas saring whatman no 41
+endapan dicuci dengan Ammonium Nitrat 1%, pencucian
+dilakukan 3 sampai 4 kali hingga bersih
+
+⬇️ 
+
+Masukkan ke cawan porselen, lalu keringkan diatas bunsen,
+kemudian dipijarkan menggunakan meker
+
+⬇️ 
+
+Masukkan kedalam tanur, desikator dan timbang bobot akhir 
+
+⬇️ 
+
+Hitung kadar Fe (%)
 """)
         elif sub_metode == "Penentuan Kadar Barium Dalam Barium Klorida":
 
