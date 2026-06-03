@@ -608,7 +608,7 @@ elif menu == "Kalibrasi Alat":
 # =========================
 elif menu == "Panduan Analisis":
 
-    st.header("🔬 Metode Analisis")
+    st.header("🔬 Metode Analisis Laboratorium")
 
     metode = st.radio(
         "Pilih Metode:",
@@ -616,33 +616,284 @@ elif menu == "Panduan Analisis":
         horizontal=True
     )
 
+    # ==========================================
+    # GRAVIMETRI
+    # ==========================================
     if metode == "Gravimetri":
 
-        st.code("""
-Pengendapan
-↓
-Penyaringan
-↓
-Pencucian
-↓
-Pengeringan
-↓
-Penimbangan
-        """)
+        sub_metode = st.selectbox(
+            "Pilih Metode Gravimetri:",
+            [
+                "Penentuan Kadar Air",
+                "Penentuan Kadar Abu"
+            ]
+        )
 
+        if sub_metode == "Penentuan Kadar Air":
+
+            st.subheader("💧 Penentuan Kadar Air")
+
+            st.markdown("""
+### Cara Kerja
+
+Menimbang Cawan Kosong
+
+⬇️
+
+Memasukkan Sampel
+
+⬇️
+
+Menimbang Cawan dan Sampel
+
+⬇️
+
+Mengeringkan dalam Oven (105°C)
+
+⬇️
+
+Mendinginkan dalam Desikator
+
+⬇️
+
+Menimbang Kembali
+
+⬇️
+
+Mengulangi hingga Bobot Konstan
+
+⬇️
+
+Menghitung Kadar Air
+""")
+
+        elif sub_metode == "Penentuan Kadar Abu":
+
+            st.subheader("🔥 Penentuan Kadar Abu")
+
+            st.markdown("""
+### Cara Kerja
+
+Menimbang Cawan Porselen Kosong
+
+⬇️
+
+Memasukkan Sampel
+
+⬇️
+
+Menimbang Cawan dan Sampel
+
+⬇️
+
+Memijarkan dalam Furnace (550–600°C)
+
+⬇️
+
+Mendinginkan dalam Desikator
+
+⬇️
+
+Menimbang Abu yang Tersisa
+
+⬇️
+
+Mengulangi hingga Bobot Konstan
+
+⬇️
+
+Menghitung Kadar Abu
+""")
+
+    # ==========================================
+    # TITRIMETRI
+    # ==========================================
     elif metode == "Titrimetri":
 
-        st.code("""
-Persiapan Sampel
-↓
-Penambahan Indikator
-↓
-Titrasi
-↓
-Perubahan Warna
-↓
-Perhitungan Konsentrasi
-        """)
+        sub_metode = st.selectbox(
+            "Pilih Metode Titrimetri:",
+            [
+                "Standarisasi NaOH 0,1 N",
+                "Standarisasi HCl 0,1 N",
+                "Standarisasi KMnO₄ 0,1 N",
+                "Standarisasi Na₂S₂O₃ 0,1 N",
+                "Standarisasi EDTA 0,1 N"
+            ]
+        )
+
+        if sub_metode == "Standarisasi NaOH 0,1 N":
+
+            st.subheader("🧪 Standarisasi NaOH 0,1 N")
+
+            st.markdown("""
+### Cara Kerja
+
+Menimbang Asam Oksalat
+
+⬇️
+
+Melarutkan dalam Aquades
+
+⬇️
+
+Menambahkan Indikator Fenolftalein (PP)
+
+⬇️
+
+Menitrasi dengan Larutan NaOH
+
+⬇️
+
+Mencatat Volume NaOH
+
+⬇️
+
+Menghitung Normalitas NaOH
+""")
+
+        elif sub_metode == "Standarisasi HCl 0,1 N":
+
+            st.subheader("🧪 Standarisasi HCl 0,1 N")
+
+            st.markdown("""
+### Cara Kerja
+
+Menimbang Na₂CO₃ Primer
+
+⬇️
+
+Melarutkan dalam Aquades
+
+⬇️
+
+Menambahkan Indikator Metil Oranye
+
+⬇️
+
+Menitrasi dengan Larutan HCl
+
+⬇️
+
+Mencatat Volume HCl
+
+⬇️
+
+Menghitung Normalitas HCl
+""")
+
+        elif sub_metode == "Standarisasi KMnO₄ 0,1 N":
+
+            st.subheader("🧪 Standarisasi KMnO₄ 0,1 N")
+
+            st.markdown("""
+### Cara Kerja
+
+Menimbang Natrium Oksalat
+
+⬇️
+
+Melarutkan dalam Aquades
+
+⬇️
+
+Menambahkan H₂SO₄
+
+⬇️
+
+Memanaskan Larutan
+
+⬇️
+
+Menitrasi dengan KMnO₄
+
+⬇️
+
+Terbentuk Warna Merah Muda Permanen
+
+⬇️
+
+Menghitung Normalitas KMnO₄
+""")
+
+        elif sub_metode == "Standarisasi Na₂S₂O₃ 0,1 N":
+
+            st.subheader("🧪 Standarisasi Na₂S₂O₃ 0,1 N")
+
+            st.markdown("""
+### Cara Kerja
+
+Menimbang KIO₃
+
+⬇️
+
+Melarutkan dalam Aquades
+
+⬇️
+
+Menambahkan KI Berlebih
+
+⬇️
+
+Menambahkan HCl
+
+⬇️
+
+Membebaskan Iodin (I₂)
+
+⬇️
+
+Menitrasi dengan Na₂S₂O₃
+
+⬇️
+
+Menambahkan Indikator Amilum
+
+⬇️
+
+Titrasi hingga Larutan Tidak Berwarna
+
+⬇️
+
+Menghitung Normalitas Na₂S₂O₃
+""")
+
+        elif sub_metode == "Standarisasi EDTA 0,1 N":
+
+            st.subheader("🧪 Standarisasi EDTA 0,1 N")
+
+            st.markdown("""
+### Cara Kerja
+
+Menyiapkan Larutan Standar CaCO₃
+
+⬇️
+
+Melarutkan dalam Aquades
+
+⬇️
+
+Menambahkan Buffer pH 10
+
+⬇️
+
+Menambahkan Indikator Eriochrome Black T (EBT)
+
+⬇️
+
+Menitrasi dengan Larutan EDTA
+
+⬇️
+
+Perubahan Warna Merah Anggur Menjadi Biru
+
+⬇️
+
+Mencatat Volume EDTA
+
+⬇️
+
+Menghitung Konsentrasi EDTA
+""")
 
 # =========================
 # HALAMAN K3L
