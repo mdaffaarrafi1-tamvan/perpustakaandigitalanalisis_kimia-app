@@ -622,10 +622,13 @@ elif menu == "Panduan Analisis":
     if metode == "Gravimetri":
 
         sub_metode = st.selectbox(
-            "Pilih Metode Gravimetri:",
+            "Pilih Percobaan Gravimetri:",
             [
                 "Penentuan Kadar Air",
-                "Penentuan Kadar Abu"
+                "Penentuan Kadar Abu",
+                "Penentuan Kadar Sulfat Dalam Garam Glauber",
+                "Penentuan Kadar Besi Dalam FAS",
+                "Penentuan Kadar Barium Dalam Barium Klorida",
             ]
         )
 
@@ -636,35 +639,42 @@ elif menu == "Panduan Analisis":
             st.markdown("""
 ### Cara Kerja
 
-Menimbang Cawan Kosong
+Timbang wadah kosong + tutup
 
 ⬇️
 
-Memasukkan Sampel
+Panaskan dalam tanur ± 130˚C selama 1 jam
 
 ⬇️
 
-Menimbang Cawan dan Sampel
+Dinginkan ( Desikator ) selama 30 menit
 
 ⬇️
 
-Mengeringkan dalam Oven (105°C)
+Timbang sebagai (W0)
 
 ⬇️
 
-Mendinginkan dalam Desikator
+Timbang sampel teliti 2 gram ke wadah
+dengan posisi tutup di bawah wadah, catat
+sebagai (W1)
 
 ⬇️
 
-Menimbang Kembali
+Panaskan wadah berisi sampel dalam keadaan tidak
+tertutup rapat, di tanur pada suhu ± 130˚C selama 1 jam
 
 ⬇️
 
-Mengulangi hingga Bobot Konstan
+Dinginkan ( Desikator ) selama 15 menit
 
 ⬇️
 
-Menghitung Kadar Air
+Timbang sebagai (W2)
+
+⬇️
+
+Hitung kadar air (%)
 """)
 
         elif sub_metode == "Penentuan Kadar Abu":
@@ -674,37 +684,169 @@ Menghitung Kadar Air
             st.markdown("""
 ### Cara Kerja
 
-Menimbang Cawan Porselen Kosong
+Masukkan cawan ke tanur, lalu panaskan dengan suhu
+± 550˚C selama 1 jam
 
 ⬇️
 
-Memasukkan Sampel
+Dinginkan ( Desikator ), lalu timbang bobot kosong 
+sampai bobot tetap, catat sebagai (W0)
 
 ⬇️
 
-Menimbang Cawan dan Sampel
+Timbang sampel 3 s/d 5 gram ke cawan,
+catat sebagai (W1)
 
 ⬇️
 
-Memijarkan dalam Furnace (550–600°C)
+Sampel dalam cawan (W1) di arangkan diatas bunsen, abukan 
+dengan melakukan pemijaran menggunakan maker
 
 ⬇️
 
-Mendinginkan dalam Desikator
+Panaskan sampel dengan tanur pada suhu 
+± 550˚C selama 1 jam, dinginkan ( Desikator )
+selama 30 menit
 
 ⬇️
 
-Menimbang Abu yang Tersisa
+Ulangi step diatas hingga mendapatkan bobot konstan
 
 ⬇️
 
-Mengulangi hingga Bobot Konstan
+Timbang dan catat sebagai (W2)
 
 ⬇️
 
-Menghitung Kadar Abu
+Menghitung Kadar Abu (%)
 """)
+        elif sub_metode == "Penentuan Kadar Sulfat Dalam Garam Glauber":
 
+            st.subheader("🔥 Penentuan Kadar Sulfat Dalam Garam Glauber")
+
+            st.markdown("""
+### Cara Kerja
+
+Timbang sampel garam glauber 
+0,5 gram ke piala gelas 500 mL
+
+⬇️
+
+Larutkan dengan 250 mL air suling, lalu
+diasamkan dengan 3 mL HCL 4N
+
+⬇️
+
+Dipanaskan sampai mendidih, dibubuhi barium klorida yang 
+mendidih sambil diaduk, penambahan barium klorida harus
+dilakukan dnegna cepat sambil diaduk
+
+⬇️
+
+Uji sempurna dengan setetes larutan barium
+
+⬇️
+
+Aging selama 1 jam 
+
+⬇️
+
+Ulangi step diatas hingga mendapatkan bobot konstan
+
+⬇️
+
+Timbang dan catat sebagai (W2)
+
+⬇️
+
+Menghitung Kadar Abu (%)
+""")
+            elif sub_metode == "Penentuan Kadar Besi Dalam FAS":
+
+            st.subheader("🔥 Penentuan Kadar Abu")
+
+            st.markdown("""
+### Cara Kerja
+
+Masukkan cawan ke tanur, lalu panaskan dengan suhu
+± 550˚C selama 1 jam
+
+⬇️
+
+Dinginkan ( Desikator ), lalu timbang bobot kosong 
+sampai bobot tetap, catat sebagai (W0)
+
+⬇️
+
+Timbang sampel 3 s/d 5 gram ke cawan,
+catat sebagai (W1)
+
+⬇️
+
+Sampel dalam cawan (W1) di arangkan diatas bunsen, abukan 
+dengan melakukan pemijaran menggunakan maker
+
+⬇️
+
+Panaskan sampel dengan tanur pada suhu 
+± 550˚C selama 1 jam, dinginkan ( Desikator )
+selama 30 menit
+
+⬇️
+
+Ulangi step diatas hingga mendapatkan bobot konstan
+
+⬇️
+
+Timbang dan catat sebagai (W2)
+
+⬇️
+
+Menghitung Kadar Abu (%)
+""")
+        elif sub_metode == "Penentuan Kadar Barium Dalam Barium Klorida":
+
+            st.subheader("🔥 Penentuan Kadar Abu")
+
+            st.markdown("""
+### Cara Kerja
+
+Masukkan cawan ke tanur, lalu panaskan dengan suhu
+± 550˚C selama 1 jam
+
+⬇️
+
+Dinginkan ( Desikator ), lalu timbang bobot kosong 
+sampai bobot tetap, catat sebagai (W0)
+
+⬇️
+
+Timbang sampel 3 s/d 5 gram ke cawan,
+catat sebagai (W1)
+
+⬇️
+
+Sampel dalam cawan (W1) di arangkan diatas bunsen, abukan 
+dengan melakukan pemijaran menggunakan maker
+
+⬇️
+
+Panaskan sampel dengan tanur pada suhu 
+± 550˚C selama 1 jam, dinginkan ( Desikator )
+selama 30 menit
+
+⬇️
+
+Ulangi step diatas hingga mendapatkan bobot konstan
+
+⬇️
+
+Timbang dan catat sebagai (W2)
+
+⬇️
+
+Menghitung Kadar Abu (%)
+""")
     # ==========================================
     # TITRIMETRI
     # ==========================================
