@@ -447,6 +447,7 @@ with st.sidebar:
 # =========================
 # HALAMAN HOME
 # =========================
+if menu == "Home"
 st.markdown("""
 <div class="feature-title">
 ✨ Fitur yang Tersedia
@@ -456,8 +457,6 @@ st.markdown("""
 Berbagai fitur untuk mendukung kegiatan laboratorium dan keselamatan kerja secara digital
 </div>
 """, unsafe_allow_html=True)
-
-if menu == "Home":
     
 col1, col2, col3, col4 = st.columns(4)
 
@@ -477,7 +476,7 @@ with col1:
 with col2:
     st.markdown("""
     <div class="feature-card">
-         <div class="feature-icon">📥</div>
+        <div class="feature-icon">📥</div>
         <div class="feature-header">
               Download Dokumen
         </div>
@@ -512,6 +511,7 @@ with col4:
          </div>
      </div>
      """, unsafe_allow_html=True)
+ st.markdown("---")
     
 # =========================
 # HALAMAN MSDS
