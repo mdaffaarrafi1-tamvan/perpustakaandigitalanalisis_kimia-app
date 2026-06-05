@@ -448,15 +448,15 @@ with st.sidebar:
 # HALAMAN HOME
 # =========================
 if menu == "Home":
-st.markdown("""
-<div class="feature-title">
-✨ Fitur yang Tersedia
-</div>
+    st.markdown("""
+    <div class="feature-title">
+    ✨ Fitur yang Tersedia
+    </div>
 
-<div class="feature-subtitle">
-Berbagai fitur untuk mendukung kegiatan laboratorium dan keselamatan kerja secara digital
-</div>
-""", unsafe_allow_html=True)
+    <div class="feature-subtitle">
+    Berbagai fitur untuk mendukung kegiatan laboratorium dan keselamatan kerja secara digital
+    </div>
+    """, unsafe_allow_html=True)
     
 col1, col2, col3, col4 = st.columns(4)
 
