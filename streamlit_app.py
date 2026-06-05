@@ -460,7 +460,7 @@ if menu == "Home":
         """, unsafe_allow_html=True)
 
     with col2:
-        st.markdown("""
+        st.markdown(f"""
         <div class="card">
             <div class="card-number">{len(database_kalibrasi+</div>
             <div class="card-title">Database Kalibrasi</div>
@@ -496,7 +496,7 @@ elif menu == "MSDS & Safety":
         "🔍 Cari MSDS",
         options=sorted(database_msds.keys()),
         index=None,
-        placeholder="Ketik nama bahan kimia..."
+        placeholder="Ketik Nama Bahan Kimia Yang Ingin Dicari..."
     )
 
     if pilihan_bahan is None:
@@ -551,11 +551,11 @@ elif menu == "SNI & ISO":
         "🔍 Cari SNI/ISO",
         options=sorted(database_SNI.keys()),
         index=None,
-        placeholder="Ketik nama bahan kimia..."
+        placeholder="Ketik SNI/ISO Yang Ingin Dicari..."
     )
 
     if pilihan_bahan is None:
-        st.info("Silakan cari dan pilih bahan kimia.")
+        st.info("Silakan cari dan pilih SNI.")
         st.stop()
 
     Nama_file_pdf = database_SNI[pilihan_bahan]
