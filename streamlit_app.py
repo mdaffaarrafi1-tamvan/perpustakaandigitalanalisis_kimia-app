@@ -87,6 +87,8 @@ database_SNI = {
     "ISO_IEC_17025_2017_ENG Pengujian dan Kalibrasi": "ISO_IEC_17025_2017_ENG.pdf",
     "ISO_5667_1_2023_ENG Water Quality": "ISO_5667_1_2023_ENG.pdf",
     "ISO_5667_1_2020_ENG Water Quality": "ISO_5667_1_2020_ENG.pdf",
+    "ISO_5667_1_2020_ENG Water Quality": "ISO_5667_1_2020_ENG.pdf",
+    "ISO_5667_1_2020_ENG Water Quality": "ISO_5667_1_2020_ENG.pdf",
 }
 
 # =========================
