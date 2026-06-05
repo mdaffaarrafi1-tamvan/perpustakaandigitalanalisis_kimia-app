@@ -447,7 +447,7 @@ with st.sidebar:
 # =========================
 # HALAMAN HOME
 # =========================
-if menu == "Home"
+if menu == "Home":
 st.markdown("""
 <div class="feature-title">
 ✨ Fitur yang Tersedia
