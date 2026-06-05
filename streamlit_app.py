@@ -511,7 +511,23 @@ with col4:
         </div>
      </div>
      """, unsafe_allow_html=True)
-    st.markdown("---")
+    
+    st.markdown("""
+<div style="
+background:rgba(15,23,42,0.8);
+padding:25px;
+border-radius:20px;
+margin-top:30px;
+text-align:center;
+color:white;
+font-size:20px;
+">
+
+🛡️ Semua fitur dirancang untuk mendukung efisiensi kerja laboratorium serta meningkatkan
+<b style="color:#38bdf8;">keselamatan, kualitas, dan kepatuhan terhadap standar.</b>
+
+</div>
+""", unsafe_allow_html=True)
     
 # =========================
 # HALAMAN MSDS
