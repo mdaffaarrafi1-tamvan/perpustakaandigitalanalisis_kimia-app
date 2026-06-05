@@ -94,6 +94,12 @@ database_SNI = {
 }
 
 # =========================
+# DATABASE FILE Kalibrasi
+# =========================
+database_SNI = {
+}
+
+# =========================
 # KONFIGURASI HALAMAN
 # =========================
 st.markdown("""
@@ -844,7 +850,7 @@ Hitung kadar Fe (%)
 """)
         elif sub_metode == "Penentuan Kadar Barium Dalam Barium Klorida":
 
-            st.subheader("🔥 Penentuan Kadar Abu")
+            st.subheader("🔥 Penentuan Kadar Barium")
 
             st.markdown("""
 ### Cara Kerja
