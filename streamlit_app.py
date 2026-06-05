@@ -457,59 +457,61 @@ Berbagai fitur untuk mendukung kegiatan laboratorium dan keselamatan kerja secar
 </div>
 """, unsafe_allow_html=True)
 
+if menu == "Home":
+    
 col1, col2, col3, col4 = st.columns(4)
 
-    with col1:
-        st.markdown("""
-        <div class="feature-card">
-            <div class="feature-icon">🧪</div>
-            <div class="feature-header">
-                Database MSDS
-            </div>
-            <div class="feature-desc">
-                Akses cepat ke database MSDS berbagai bahan kimia untuk mendukung keselamatan kerja laboratorium.
-            </div>
+with col1:
+    st.markdown("""
+    <div class="feature-card">
+        <div class="feature-icon">🧪</div>
+        <div class="feature-header">
+            Database MSDS
         </div>
-        """, unsafe_allow_html=True)
+        <div class="feature-desc">
+            Akses cepat ke database MSDS berbagai bahan kimia untuk mendukung keselamatan kerja laboratorium.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    with col2:
-        st.markdown("""
-        <div class="feature-card">
-            <div class="feature-icon">📥</div>
-            <div class="feature-header">
-                Download Dokumen
-            </div>
-            <div class="feature-desc">
-                Unduh dokumen keselamatan kerja dan referensi laboratorium secara cepat dan mudah.
-            </div>
+with col2:
+    st.markdown("""
+    <div class="feature-card">
+         <div class="feature-icon">📥</div>
+        <div class="feature-header">
+              Download Dokumen
         </div>
-        """, unsafe_allow_html=True)
+        <div class="feature-desc">
+            Unduh dokumen keselamatan kerja dan referensi laboratorium secara cepat dan mudah.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    with col3:
-        st.markdown("""
-        <div class="feature-card">
-            <div class="feature-icon">🔬</div>
-            <div class="feature-header">
-                Panduan Analisis
-            </div>
-            <div class="feature-desc">
-                Panduan lengkap metode gravimetri dan titrimetri yang umum digunakan di laboratorium.
-            </div>
+with col3:
+     st.markdown("""
+    <div class="feature-card">
+        <div class="feature-icon">🔬</div>
+        <div class="feature-header">
+            Panduan Analisis
         </div>
-        """, unsafe_allow_html=True)
+        <div class="feature-desc">
+            Panduan lengkap metode gravimetri dan titrimetri yang umum digunakan di laboratorium.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-    with col4:
-        st.markdown("""
-        <div class="feature-card">
-            <div class="feature-icon">📜</div>
-            <div class="feature-header">
-                Referensi SNI & ISO
-            </div>
-            <div class="feature-desc">
-                Kumpulan standar SNI dan ISO untuk mendukung sistem mutu laboratorium.
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+with col4:
+      st.markdown("""
+     <div class="feature-card">
+          <div class="feature-icon">📜</div>
+          <div class="feature-header">
+              Referensi SNI & ISO
+          </div>
+          <div class="feature-desc">
+             Kumpulan standar SNI dan ISO untuk mendukung sistem mutu laboratorium.
+         </div>
+     </div>
+     """, unsafe_allow_html=True)
     
 # =========================
 # HALAMAN MSDS
