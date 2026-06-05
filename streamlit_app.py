@@ -487,7 +487,7 @@ with col2:
     """, unsafe_allow_html=True)
 
 with col3:
-     st.markdown("""
+    st.markdown("""
     <div class="feature-card">
         <div class="feature-icon">🔬</div>
         <div class="feature-header">
@@ -500,17 +500,18 @@ with col3:
     """, unsafe_allow_html=True)
 
 with col4:
-      st.markdown("""
+    st.markdown("""
      <div class="feature-card">
-          <div class="feature-icon">📜</div>
-          <div class="feature-header">
-              Referensi SNI & ISO
+        <div class="feature-icon">📜</div>
+        <div class="feature-header">
+            Referensi SNI & ISO
           </div>
-          <div class="feature-desc">
-             Kumpulan standar SNI dan ISO untuk mendukung sistem mutu laboratorium.
-         </div>
+        <div class="feature-desc">
+            Kumpulan standar SNI dan ISO untuk mendukung sistem mutu laboratorium.
+        </div>
      </div>
      """, unsafe_allow_html=True)
+    st.markdown("---")
     
 # =========================
 # HALAMAN MSDS
