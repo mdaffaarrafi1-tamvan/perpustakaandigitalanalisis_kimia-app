@@ -77,6 +77,9 @@ database_SNI = {
     "SNI 19-0428-1998_Sampling Padatan": "SNI 19-0428-1998_Sampling Padatan.pdf",
     "SNI 03-6802-2002_Sampling Tanah ": "SNI 03-6802-2002_Sampling Tanah .pdf",
     "SNI 19-0428-1998_Sampling Padatan": "SNI 19-0428-1998_Sampling Padatan.pdf",
+    "SNI-06-6989.3-2004_TSS-Secara-Gravimetri": "SNI-06-6989.3-2004-TSS-Secara-Gravimetri.pdf",
+    "SNI-6989-72_2009_Cara-Uji-Kebutuhan-BOD": "SNI-6989-72_2009-Cara-Uji-Kebutuhan-BOD.pdf",
+    "SNI-1971-2011_Cara-Uji-Kadar-Air-Total-Agregat-Dengan-Pengeringan": "SNI-1971-2011-Cara-Uji-Kadar-Air-Total-Agregat-Dengan-Pengeringan.pdf",
     "ISO-10381-1-2002 Soil Quality": "ISO-10381-1-2002.pdf",
     "ISO-10381-2-2002 Soil Quality": "ISO-10381-2-2002.pdf",
     "ISO-10381-3-2001 SOil Quality": "ISO-10381-3-2001.pdf",
@@ -87,8 +90,7 @@ database_SNI = {
     "ISO_IEC_17025_2017_ENG Pengujian dan Kalibrasi": "ISO_IEC_17025_2017_ENG.pdf",
     "ISO_5667_1_2023_ENG Water Quality": "ISO_5667_1_2023_ENG.pdf",
     "ISO_5667_1_2020_ENG Water Quality": "ISO_5667_1_2020_ENG.pdf",
-    "ISO_5667_1_2020_ENG Water Quality": "ISO_5667_1_2020_ENG.pdf",
-    "ISO_5667_1_2020_ENG Water Quality": "ISO_5667_1_2020_ENG.pdf",
+    "ISO-45001-2018 Occupational health and safety management systems ": "ISO-45001-2018.pdf",
 }
 
 # =========================
