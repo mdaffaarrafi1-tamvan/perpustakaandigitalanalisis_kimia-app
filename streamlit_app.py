@@ -447,44 +447,70 @@ with st.sidebar:
 # =========================
 # HALAMAN HOME
 # =========================
-if menu == "Home":
+st.markdown("""
+<div class="feature-title">
+✨ Fitur yang Tersedia
+</div>
 
-    col1, col2, col3 = st.columns(3)
+<div class="feature-subtitle">
+Berbagai fitur untuk mendukung kegiatan laboratorium dan keselamatan kerja secara digital
+</div>
+""", unsafe_allow_html=True)
 
-    with col1:
-        st.markdown(f"""
-        <div class="card">
-            <div class="card-number">{len(database_msds)}+</div>
-            <div class="card-title">Database MSDS</div>
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    st.markdown("""
+    <div class="feature-card">
+        <div class="feature-icon">🧪</div>
+        <div class="feature-header">
+            Database MSDS
         </div>
-        """, unsafe_allow_html=True)
-
-    with col2:
-        st.markdown(f"""
-        <div class="card">
-            <div class="card-number">{len(database_kalibrasi)}+</div>
-            <div class="card-title">Database Kalibrasi</div>
+        <div class="feature-desc">
+            Akses cepat ke database MSDS berbagai bahan kimia untuk mendukung keselamatan kerja laboratorium.
         </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("""
+    <div class="feature-card">
+        <div class="feature-icon">📥</div>
+        <div class="feature-header">
+            Download Dokumen
+        </div>
+        <div class="feature-desc">
+            Unduh dokumen keselamatan kerja dan referensi laboratorium secara cepat dan mudah.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col3:
+    st.markdown("""
+    <div class="feature-card">
+        <div class="feature-icon">🔬</div>
+        <div class="feature-header">
+            Panduan Analisis
+        </div>
+        <div class="feature-desc">
+            Panduan lengkap metode gravimetri dan titrimetri yang umum digunakan di laboratorium.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col4:
+    st.markdown("""
+    <div class="feature-card">
+        <div class="feature-icon">📜</div>
+        <div class="feature-header">
+            Referensi SNI & ISO
+        </div>
+        <div class="feature-desc">
+            Kumpulan standar SNI dan ISO untuk mendukung sistem mutu laboratorium.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
-    with col3:
-        st.markdown(f"""
-        <div class="card">
-            <div class="card-number">{len(database_SNI)}+</div>
-            <div class="card-title">Database SNI/ISO</div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    st.markdown("---")
-
-    st.info("""
-    📚 Fitur yang tersedia:
-    
-    - Database MSDS bahan kimia
-    - Download dokumen keselamatan kerja
-    - Panduan analisis gravimetri dan titrimetri
-    - Referensi SNI dan ISO 
-    """)
 # =========================
 # HALAMAN MSDS
 # =========================
