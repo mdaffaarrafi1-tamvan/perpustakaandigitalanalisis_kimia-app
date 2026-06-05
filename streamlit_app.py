@@ -96,7 +96,8 @@ database_SNI = {
 # =========================
 # DATABASE FILE Kalibrasi
 # =========================
-database_SNI = {
+database_kalibrasi = {
+    "HPLC": "hplc-method-dev-guide-br6818en-mk.pdf",
 }
 
 # =========================
@@ -108,7 +109,7 @@ st.markdown("""
 </div>
 
 <div class="sub-title">
-MSDS • SNI • ISO • K3L • Metode Analisis Laboratorium
+MSDS • SNI • ISO • Metode Analisis Laboratorium
 </div>
 """, unsafe_allow_html=True)
 
@@ -398,7 +399,6 @@ with st.sidebar:
             "SNI & ISO",
             "Kalibrasi Alat",
             "Panduan Analisis",
-            "K3L & Limbah"
         ],
         icons=[
             "house-fill",
@@ -406,7 +406,6 @@ with st.sidebar:
             "file-earmark-text-fill",
             "tools",
             "clipboard-data-fill",
-            "shield-check"
         ],
         menu_icon="mortarboard-fill",
         default_index=0,
@@ -463,8 +462,8 @@ if menu == "Home":
     with col2:
         st.markdown("""
         <div class="card">
-            <div class="card-number">0+</div>
-            <div class="card-title">BANGKE</div>
+            <div class="card-number">{len(database_kalibrasi+</div>
+            <div class="card-title">Database Kalibrasi</div>
         </div>
         """, unsafe_allow_html=True)
     
@@ -484,8 +483,7 @@ if menu == "Home":
     - Database MSDS bahan kimia
     - Download dokumen keselamatan kerja
     - Panduan analisis gravimetri dan titrimetri
-    - Referensi SNI dan ISO 17025
-    - Panduan K3L laboratorium
+    - Referensi SNI dan ISO 
     """)
 # =========================
 # HALAMAN MSDS
@@ -605,14 +603,55 @@ elif menu == "Kalibrasi Alat":
 
     st.header("⚖️ Kalibrasi Instrumen")
 
-    st.write("""
-    ### Langkah Kalibrasi:
-    1. Pastikan alat bersih
-    2. Cek waterpass
-    3. Gunakan anak timbangan standar
-    4. Catat hasil kalibrasi
-    """)
+    pilihan_bahan = st.selectbox(
+        "🔍 Cari Kalibrasi",
+        options=sorted(database_kalibrasi.keys()),
+        index=None,
+        placeholder="Ketik Instrumen Yang Ingin Dikalibrasi..."
+    )
 
+    if pilihan_bahan is None:
+        st.info("Silakan cari dan pilih Instrumen.")
+        st.stop()
+
+    nAma_file_pdf = database_kalibrasi[pilihan_bahan]
+    
+     # Folder PDF
+    fOlder_pdf = "pdf_kalibrasi"
+
+    # Gabungkan path
+    Path_file = os.path.join(fOlder_pdf, nAma_file_pdf)
+
+    st.info(f"📄 File dipilih: {nAma_file_pdf}")
+
+    # =========================
+    # CEK FILE ADA / TIDAK
+    # =========================
+    if os.path.exists(Path_file):
+
+        # Baca PDF
+        with open(Path_file, "rb") as file_pdf:
+            kOnten_pdf = file_pdf.read()
+
+        # =========================
+        # TOMBOL DOWNLOAD
+        # =========================
+        st.download_button(
+            label="📥 Download PDF",
+            data=kOnten_pdf,
+            file_name=nAma_file_pdf,
+            mime="application/pdf",
+            use_container_width=True
+        )
+
+        st.success("✅ File PDF berhasil dimuat")
+
+        # =========================
+        # PREVIEW PDF
+        # =========================
+        st.subheader("📄 Preview PDF")       
+        pdf_viewer(kOnten_pdf)
+        
 # =========================
 # HALAMAN PANDUAN ANALISIS
 # =========================
