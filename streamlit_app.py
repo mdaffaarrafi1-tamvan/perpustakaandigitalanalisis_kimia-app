@@ -511,7 +511,6 @@ with col4:
          </div>
      </div>
      """, unsafe_allow_html=True)
- st.markdown("---")
     
 # =========================
 # HALAMAN MSDS
