@@ -957,27 +957,28 @@ Menghitung Kadar Abu (%)
             st.markdown("""
 ### Cara Kerja
 
-Menimbang Asam Oksalat
+Timbang teliti ± 630 mg asam oksalat dengan kaca arloji
 
 ⬇️
 
-Melarutkan dalam Aquades
+Larutkan dalam labu takar 100 mL, lalu homogenkan
 
 ⬇️
 
-Menambahkan Indikator Fenolftalein (PP)
+Larutan dipipet sebanyak 25 mL ke dalam erlenmeyer 250 mL
 
 ⬇️
 
-Menitrasi dengan Larutan NaOH
+Tambahkan 2 tetes indikator fenolftalein ( PP )
 
 ⬇️
 
-Mencatat Volume NaOH
+Titar dengan NaOH 0,1N 
+tidak berwarna -> merah muda seulas 
 
 ⬇️
 
-Menghitung Normalitas NaOH
+Catat volume, lalu hitung normalitas NaOH
 """)
 
         elif sub_metode == "Standarisasi HCl 0,1 N":
@@ -987,27 +988,28 @@ Menghitung Normalitas NaOH
             st.markdown("""
 ### Cara Kerja
 
-Menimbang Na₂CO₃ Primer
+Timbang teliti 1500 mg boraks dengan kaca arloji
 
 ⬇️
 
-Melarutkan dalam Aquades
+Larutkan dalam labu takar 100 mL, lalu homogenkan
 
 ⬇️
 
-Menambahkan Indikator Metil Oranye
+Larutan dipipet sebanyak 25 mL ke dalam erlenmeyer 250 mL
 
 ⬇️
 
-Menitrasi dengan Larutan HCl
+Tambahkan 2 tetes indikator metil merah ( MM )
 
 ⬇️
 
-Mencatat Volume HCl
+Titar dengan HCl 0,1N 
+kuning seulas -> merah muda seulas 
 
 ⬇️
 
-Menghitung Normalitas HCl
+Catat volume, lalu hitung normalitas HCl
 """)
 
         elif sub_metode == "Standarisasi KMnO₄ 0,1 N":
@@ -1017,31 +1019,25 @@ Menghitung Normalitas HCl
             st.markdown("""
 ### Cara Kerja
 
-Menimbang Natrium Oksalat
+Timbang teliti ± 630 mg asam oksalat dengan kaca arloji
 
 ⬇️
 
-Melarutkan dalam Aquades
+Larutkan dalam labu takar 100 mL, lalu homogenkan
 
 ⬇️
 
-Menambahkan H₂SO₄
+Larutan dipipet sebanyak 25 mL ke dalam erlenmeyer 250 mL
++ asam sulfat 25 mL, lalu panaskan sampai 70˚C
 
 ⬇️
 
-Memanaskan Larutan
+Titar dengan KMnO4 
+Tidak berwarna -> merah muda seulas 
 
 ⬇️
 
-Menitrasi dengan KMnO₄
-
-⬇️
-
-Terbentuk Warna Merah Muda Permanen
-
-⬇️
-
-Menghitung Normalitas KMnO₄
+Catat volume, lalu hitung normalitas KMnO4
 """)
 
         elif sub_metode == "Standarisasi Na₂S₂O₃ 0,1 N":
