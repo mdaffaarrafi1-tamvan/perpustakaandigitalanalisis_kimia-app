@@ -136,7 +136,7 @@ st.markdown("""
 
     background-size: 500% 500%;
 
-    animation: animateBG 1s ease infinite;
+    animation: animateBG 18s ease infinite;
 }
 
 @keyframes animateBG{
