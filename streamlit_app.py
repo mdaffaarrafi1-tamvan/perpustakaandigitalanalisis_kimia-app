@@ -372,6 +372,41 @@ div[role="radiogroup"] label:hover{
 }
 
 /* ==========================================
+   ITEM DROPDOWN SELECTBOX
+========================================== */
+
+div[role="option"] span{
+
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #22c55e,
+        #a855f7
+    );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:auroraText 5s linear infinite;
+
+    font-weight:600;
+}
+
+@keyframes auroraText{
+
+    0%{
+        background-position:0% center;
+    }
+
+    100%{
+        background-position:300% center;
+    }
+}
+
+/* ==========================================
    HEADER TEXT
 ========================================== */
 
@@ -380,24 +415,11 @@ h1,h2,h3,h4,h5,h6{
     color:white !important;
 }
 
-p,label{
+p,li,label{
 
     color:#f1f5f9 !important;
 }
 
-li{
-
-    color: linear-gradient(
-        90deg,
-        #38bdf8,
-        #22c55e,
-        #a855f7,
-        #38bdf8
-    );
-
-    animation:auroraText 5s linear infinite;
-
-}
 </style>
 """, unsafe_allow_html=True)
 
