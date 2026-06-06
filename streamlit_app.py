@@ -372,6 +372,83 @@ div[role="radiogroup"] label:hover{
 }
 
 /* ==========================================
+   HEADER TEXT
+========================================== */
+
+h1,h2,h3,h4,h5,h6{
+
+    color:white !important;
+}
+
+p,li,label{
+
+    color:#f1f5f9 !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# =========================
+# SIDEBAR
+# =========================
+
+
+with st.sidebar:
+    
+    menu = option_menu(
+        menu_title=" Navigasi",
+        options=[
+            "Home",
+            "MSDS & Safety",
+            "SNI & ISO",
+            "Kalibrasi Alat",
+            "Panduan Analisis",
+        ],
+        icons=[
+            "house-fill",
+            "exclamation-triangle-fill",
+            "file-earmark-text-fill",
+            "tools",
+            "clipboard-data-fill",
+        ],
+        menu_icon="mortarboard-fill",
+        default_index=0,
+        styles={
+            "container": {
+                "padding": "10px",
+                "background-color": "#0f172a",
+                "border-radius": "15px"
+            },
+
+            "icon": {
+                "color": "#38bdf8",
+                "font-size": "18px"
+            },
+
+            "menu-title": {
+                "color": "white",
+                "font-size": "20px",
+                "font-weight": "bold"
+            },
+
+            "nav-link": {
+                "font-size": "15px",
+                "text-align": "left",
+                "padding": "12px",
+                "margin": "5px",
+                "border-radius": "12px",
+                "--hover-color": "#1e293b",
+            },
+
+            "nav-link-selected": {
+                "background": "linear-gradient(135deg,#2563eb,#06b6d4)",
+                "color": "white",
+                "font-weight": "bold",
+            },
+        }
+    )
+
+/* ==========================================
    ITEM DROPDOWN SELECTBOX
 ========================================== */
 
@@ -474,78 +551,6 @@ div[role="option"] span{
         background-position:300% center;
     }
 }
-
-/* ==========================================
-   HEADER TEXT
-========================================== */
-
-h1,h2,h3,h4,h5,h6{
-
-    color:white !important;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-# =========================
-# SIDEBAR
-# =========================
-
-
-with st.sidebar:
-    
-    menu = option_menu(
-        menu_title=" Navigasi",
-        options=[
-            "Home",
-            "MSDS & Safety",
-            "SNI & ISO",
-            "Kalibrasi Alat",
-            "Panduan Analisis",
-        ],
-        icons=[
-            "house-fill",
-            "exclamation-triangle-fill",
-            "file-earmark-text-fill",
-            "tools",
-            "clipboard-data-fill",
-        ],
-        menu_icon="mortarboard-fill",
-        default_index=0,
-        styles={
-            "container": {
-                "padding": "10px",
-                "background-color": "#0f172a",
-                "border-radius": "15px"
-            },
-
-            "icon": {
-                "color": "#38bdf8",
-                "font-size": "18px"
-            },
-
-            "menu-title": {
-                "color": "white",
-                "font-size": "20px",
-                "font-weight": "bold"
-            },
-
-            "nav-link": {
-                "font-size": "15px",
-                "text-align": "left",
-                "padding": "12px",
-                "margin": "5px",
-                "border-radius": "12px",
-                "--hover-color": "#1e293b",
-            },
-
-            "nav-link-selected": {
-                "background": "linear-gradient(135deg,#2563eb,#06b6d4)",
-                "color": "white",
-                "font-weight": "bold",
-            },
-        }
-    )
 
 # =========================
 # HALAMAN HOME
