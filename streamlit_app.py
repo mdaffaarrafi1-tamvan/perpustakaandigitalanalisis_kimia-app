@@ -375,6 +375,75 @@ div[role="radiogroup"] label:hover{
    ITEM DROPDOWN SELECTBOX
 ========================================== */
 
+div[role="option"]{
+
+    background: rgba(15,23,42,0.95) !important;
+
+    color: white !important;
+
+    transition: all 0.3s ease;
+
+    border-radius: 10px;
+
+    margin: 2px 5px;
+}
+
+/* Saat cursor diarahkan ke item */
+
+div[role="option"]:hover{
+
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #22c55e,
+        #a855f7,
+        #38bdf8
+    ) !important;
+
+    background-size: 300% auto;
+
+    animation: auroraOption 3s linear infinite;
+
+    color: white !important;
+
+    transform: translateX(5px);
+}
+
+/* Item yang sedang dipilih */
+
+div[role="option"][aria-selected="true"]{
+
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #22c55e,
+        #a855f7,
+        #38bdf8
+    ) !important;
+
+    background-size: 300% auto;
+
+    animation: auroraOption 4s linear infinite;
+
+    color: white !important;
+
+    font-weight: bold;
+}
+
+/* Animasi aurora */
+
+@keyframes auroraOption{
+
+    0%{
+        background-position:0% center;
+    }
+
+    100%{
+        background-position:300% center;
+    }
+}
+
+
 div[role="option"] span{
 
     background: linear-gradient(
