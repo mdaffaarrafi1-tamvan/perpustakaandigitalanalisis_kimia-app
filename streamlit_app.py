@@ -522,6 +522,9 @@ div[role="option"][aria-selected="true"]{
         background-position:300% center;
     }
 }
+</style>
+""", unsafe_allow_html=True)
+
 # =========================
 # HALAMAN HOME
 # =========================
