@@ -402,7 +402,7 @@ li{
 
     animation:auroraText 5s linear infinite;
 
-    font-weight:600;!important;
+    font-weight:600;
 }
 </style>
 """, unsafe_allow_html=True)
