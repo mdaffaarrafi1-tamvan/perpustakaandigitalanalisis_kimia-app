@@ -484,11 +484,6 @@ h1,h2,h3,h4,h5,h6{
     color:white !important;
 }
 
-p,li,label{
-
-    color:#f1f5f9 !important;
-}
-
 </style>
 """, unsafe_allow_html=True)
 
