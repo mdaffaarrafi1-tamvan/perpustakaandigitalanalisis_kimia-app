@@ -458,7 +458,7 @@ div[role="option"]{
 
     color: white !important;
 
-    transition: all 0.3s ease;
+    transition: all 0,3s ease;
 
     border-radius: 10px;
 
