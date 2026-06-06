@@ -380,11 +380,15 @@ h1,h2,h3,h4,h5,h6{
     color:white !important;
 }
 
-p,li,label{
+p,label{
 
-    color:#39FF14 !important;
+    color:#f1f5f9 !important;
 }
 
+li{
+
+    color:#8E8E8E !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
