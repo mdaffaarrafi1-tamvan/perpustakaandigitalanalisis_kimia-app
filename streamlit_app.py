@@ -448,7 +448,7 @@ with st.sidebar:
 # HALAMAN HOME
 # =========================
 if menu == "Home":
-        col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
         st.markdown(f"""
