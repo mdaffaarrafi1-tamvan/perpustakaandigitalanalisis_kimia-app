@@ -380,24 +380,14 @@ h1,h2,h3,h4,h5,h6{
     color:white !important;
 }
 
-p,li,label{
+p,label{
 
-    background: linear-gradient(
-        90deg,
-        #38bdf8,
-        #22c55e,
-        #a855f7,
-        #38bdf8
-    );
+    color:#f1f5f9 !important;
+}
 
-    background-size:300% auto;
+li{
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    animation:auroraText 5s linear infinite;
-
-    font-weight:600;
+    color:#FFD1DC !important;
 }
 
 </style>
