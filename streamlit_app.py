@@ -387,7 +387,7 @@ p,label{
 
 li{
 
-    background: linear-gradient(
+    color: linear-gradient(
         90deg,
         #38bdf8,
         #22c55e,
@@ -395,13 +395,8 @@ li{
         #38bdf8
     );
 
-    background-size:300% auto;
-
-    -webkit-text-fill-color:transparent;
-
     animation:auroraText 5s linear infinite;
 
-    font-weight:600;
 }
 </style>
 """, unsafe_allow_html=True)
