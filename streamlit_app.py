@@ -458,74 +458,74 @@ if menu == "Home":
     </div>
     """, unsafe_allow_html=True)
     
-col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4 = st.columns(4)
 
-with col1:
-    st.markdown("""
-        <div class="feature-card">
-        <div class="feature-icon">🧪</div>
-        <div class="feature-header">
-            Database MSDS
+    with col1:
+        st.markdown("""
+            <div class="feature-card">
+            <div class="feature-icon">🧪</div>
+            <div class="feature-header">
+                Database MSDS
+            </div>
+            <div class="feature-desc">
+                Akses cepat ke database MSDS berbagai bahan kimia untuk mendukung keselamatan kerja laboratorium.
+            </div>
         </div>
-        <div class="feature-desc">
-            Akses cepat ke database MSDS berbagai bahan kimia untuk mendukung keselamatan kerja laboratorium.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
-with col2:
-    st.markdown("""
-        <div class="feature-card">
-        <div class="feature-icon">📥</div>
-        <div class="feature-header">
-            Download Dokumen
+    with col2:
+        st.markdown("""
+            <div class="feature-card">
+            <div class="feature-icon">📥</div>
+            <div class="feature-header">
+                Download Dokumen
+            </div>
+            <div class="feature-desc">
+                Unduh dokumen keselamatan kerja dan referensi laboratorium secara cepat dan mudah.
+            </div>
         </div>
-        <div class="feature-desc">
-            Unduh dokumen keselamatan kerja dan referensi laboratorium secara cepat dan mudah.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
-with col3:
-    st.markdown("""
-        <div class="feature-card">
-        <div class="feature-icon">🔬</div>
-        <div class="feature-header">
-            Panduan Analisis
-        </div>
-        <div class="feature-desc">
-            Panduan lengkap metode gravimetri dan titrimetri yang umum digunakan di laboratorium.
-        </div>
-        </div>
-    """, unsafe_allow_html=True)
+    with col3:
+        st.markdown("""
+            <div class="feature-card">
+            <div class="feature-icon">🔬</div>
+            <div class="feature-header">
+                Panduan Analisis
+            </div>
+            <div class="feature-desc">
+                Panduan lengkap metode gravimetri dan titrimetri yang umum digunakan di laboratorium.
+            </div>
+            </div>
+        """, unsafe_allow_html=True)
 
-with col4:
-    st.markdown("""
-        <div class="feature-card">
-        <div class="feature-icon">📜</div>
-        <div class="feature-header">
-            Referensi SNI & ISO
+    with col4:
+        st.markdown("""
+            <div class="feature-card">
+            <div class="feature-icon">📜</div>
+            <div class="feature-header">
+                Referensi SNI & ISO
+            </div>
+            <div class="feature-desc">
+                Kumpulan standar SNI dan ISO untuk mendukung sistem mutu laboratorium.
+            </div>
+            </div>
+        """, unsafe_allow_html=True)
+            
+        st.markdown("""
+        <div style="
+        background:rgba(15,23,42,0.8);
+        padding:25px;
+        border-radius:20px;
+        margin-top:30px;
+        text-align:center;
+        color:white;
+        font-size:20px;
+        ">
+        🛡️ Semua fitur dirancang untuk mendukung efisiensi kerja laboratorium serta meningkatkan
+        <b style="color:#38bdf8;">keselamatan, kualitas, dan kepatuhan terhadap standar.</b>
         </div>
-        <div class="feature-desc">
-            Kumpulan standar SNI dan ISO untuk mendukung sistem mutu laboratorium.
-        </div>
-        </div>
-    """, unsafe_allow_html=True)
-        
-    st.markdown("""
-    <div style="
-    background:rgba(15,23,42,0.8);
-    padding:25px;
-    border-radius:20px;
-    margin-top:30px;
-    text-align:center;
-    color:white;
-    font-size:20px;
-    ">
-    🛡️ Semua fitur dirancang untuk mendukung efisiensi kerja laboratorium serta meningkatkan
-    <b style="color:#38bdf8;">keselamatan, kualitas, dan kepatuhan terhadap standar.</b>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
     
 # =========================
