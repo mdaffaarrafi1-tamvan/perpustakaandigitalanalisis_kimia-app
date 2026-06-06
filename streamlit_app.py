@@ -448,58 +448,58 @@ with st.sidebar:
 # HALAMAN HOME
 # =========================
 if menu == "Home":
-st.markdown("""
-<style>
-
-.feature-title{
-    text-align:center;
-    color:white;
-    font-size:2.5rem;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.feature-subtitle{
-    text-align:center;
-    color:#dbeafe;
-    font-size:1.1rem;
-    margin-bottom:40px;
-}
-
-.feature-card{
-    background:rgba(255,255,255,0.95);
-    border-radius:25px;
-    padding:25px;
-    text-align:center;
-    height:420px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-    transition:0.3s;
-}
-
-.feature-card:hover{
-    transform:translateY(-8px);
-}
-
-.feature-icon{
-    font-size:60px;
-    margin-bottom:15px;
-}
-
-.feature-header{
-    font-size:1.5rem;
-    font-weight:bold;
-    color:#0f172a;
-    margin-bottom:15px;
-}
-
-.feature-desc{
-    color:#334155;
-    font-size:1rem;
-    line-height:1.6;
-}
-
-</style>
-""", unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+    
+    .feature-title{
+        text-align:center;
+        color:white;
+        font-size:2.5rem;
+        font-weight:bold;
+        margin-bottom:10px;
+    }
+    
+    .feature-subtitle{
+        text-align:center;
+        color:#dbeafe;
+        font-size:1.1rem;
+        margin-bottom:40px;
+    }
+    
+    .feature-card{
+        background:rgba(255,255,255,0.95);
+        border-radius:25px;
+        padding:25px;
+        text-align:center;
+        height:420px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        transition:0.3s;
+    }
+    
+    .feature-card:hover{
+        transform:translateY(-8px);
+    }
+    
+    .feature-icon{
+        font-size:60px;
+        margin-bottom:15px;
+    }
+    
+    .feature-header{
+        font-size:1.5rem;
+        font-weight:bold;
+        color:#0f172a;
+        margin-bottom:15px;
+    }
+    
+    .feature-desc{
+        color:#334155;
+        font-size:1rem;
+        line-height:1.6;
+    }
+    
+    </style>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
     <div class="feature-title">
