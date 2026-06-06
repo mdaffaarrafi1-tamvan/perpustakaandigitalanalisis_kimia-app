@@ -387,7 +387,22 @@ p,label{
 
 li{
 
-    color:#0f172a !important;
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #22c55e,
+        #a855f7,
+        #38bdf8
+    );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:auroraText 5s linear infinite;
+
+    font-weight:600;!important;
 }
 </style>
 """, unsafe_allow_html=True)
