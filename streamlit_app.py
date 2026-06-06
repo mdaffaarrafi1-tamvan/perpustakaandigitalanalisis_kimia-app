@@ -382,7 +382,7 @@ h1,h2,h3,h4,h5,h6{
 
 p,li,label{
 
-    color:#f1f5f9 !important;
+    color:#39FF14 !important;
 }
 
 </style>
