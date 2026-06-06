@@ -448,6 +448,9 @@ with st.sidebar:
         }
     )
 
+st.markdown("""
+<style>
+
 /* ==========================================
    ITEM DROPDOWN SELECTBOX
 ========================================== */
@@ -458,7 +461,7 @@ div[role="option"]{
 
     color: white !important;
 
-    transition: all 3s ease;
+    transition: all 0.3s ease;
 
     border-radius: 10px;
 
@@ -519,39 +522,6 @@ div[role="option"][aria-selected="true"]{
         background-position:300% center;
     }
 }
-
-
-div[role="option"] span{
-
-    background: linear-gradient(
-        90deg,
-        #38bdf8,
-        #22c55e,
-        #a855f7
-    );
-
-    background-size:300% auto;
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-
-    animation:auroraText 5s linear infinite;
-
-    font-weight:600;
-}
-
-@keyframes auroraText{
-
-    0%{
-        background-position:0% center;
-    }
-
-    100%{
-        background-position:300% center;
-    }
-}
-
 # =========================
 # HALAMAN HOME
 # =========================
