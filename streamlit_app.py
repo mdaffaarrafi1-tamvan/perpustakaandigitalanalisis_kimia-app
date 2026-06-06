@@ -462,7 +462,7 @@ if menu == "Home":
     with col1:
         st.markdown(f"""
         <div class="card">
-            <div class="card-number">{len(database_msds)}+</div>
+            <div class="card-number">{len(database_msds)}</div>
             <div class="card-title">Database MSDS</div>
         </div>
         """, unsafe_allow_html=True)
@@ -470,7 +470,7 @@ if menu == "Home":
     with col2:
         st.markdown(f"""
         <div class="card">
-            <div class="card-number">{len(database_kalibrasi)}+</div>
+            <div class="card-number">{len(database_kalibrasi)}</div>
             <div class="card-title">Database Kalibrasi</div>
         </div>
         """, unsafe_allow_html=True)
@@ -478,7 +478,7 @@ if menu == "Home":
     with col3:
         st.markdown(f"""
         <div class="card">
-            <div class="card-number">{len(database_SNI)}+</div>
+            <div class="card-number">{len(database_SNI)}</div>
             <div class="card-title">Database SNI/ISO</div>
         </div>
         """, unsafe_allow_html=True)
@@ -488,10 +488,9 @@ if menu == "Home":
     st.info("""
     📚 Fitur yang tersedia:
     
-    - Database MSDS bahan kimia
-    - Download dokumen keselamatan kerja
+    - Database MSDS bahan kimia, SNI, ISO, Kalibrasi Instrumen
+    - Download dokumen MSDS, SNI, ISO, Kalibrasi Instrumen
     - Panduan analisis gravimetri dan titrimetri
-    - Referensi SNI dan ISO 
     """)
 
 # =========================
