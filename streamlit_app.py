@@ -382,7 +382,7 @@ h1,h2,h3,h4,h5,h6{
 
 p,label{
 
-    color:#8A2BE2 !important;
+    color:#f1f5f9 !important;
 }
 
 li{
