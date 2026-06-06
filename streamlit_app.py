@@ -136,7 +136,7 @@ st.markdown("""
 
     background-size: 500% 500%;
 
-    animation: animateBG 18s ease infinite;
+    animation: animateBG 5s ease infinite;
 }
 
 @keyframes animateBG{
@@ -1047,7 +1047,7 @@ Catat volume, lalu hitung normalitas KMnO4
             st.markdown("""
 ### Cara Kerja
 
-Menimbang KIO₃
+Timbang teliti 500 mg kalium dikromat
 
 ⬇️
 
