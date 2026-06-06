@@ -497,7 +497,7 @@ with col3:
             Panduan lengkap metode gravimetri dan titrimetri yang umum digunakan di laboratorium.
         </div>
         </div>
-        """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
 with col4:
     st.markdown("""
@@ -510,7 +510,7 @@ with col4:
             Kumpulan standar SNI dan ISO untuk mendukung sistem mutu laboratorium.
         </div>
         </div>
-        """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
         
     st.markdown("""
     <div style="
