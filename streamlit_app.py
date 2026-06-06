@@ -98,6 +98,10 @@ database_SNI = {
 # =========================
 database_kalibrasi = {
     "HPLC": "hplc-method-dev-guide-br6818en-mk.pdf",
+    "GCMS": "Shimadzu-QP-2020-NX-GCMS-training-manual.pdf",
+    "pH Meter": "INE-PH200E_OPR_VER2.pdf",
+    "Spectro-X4PC": "Spectro-X4PC_OPR.pdf",
+    "Neraca Analitik": "shimadzu-analytical-balance-aux-Manual.pdf",
 }
 
 # =========================
