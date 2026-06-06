@@ -387,7 +387,7 @@ p,label{
 
 li{
 
-    color:#0f172a,#1e3a8a,#0f766e,#4338ca,#0f172a !important;
+    color:#0f172a !important;
 }
 </style>
 """, unsafe_allow_html=True)
