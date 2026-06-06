@@ -452,7 +452,6 @@ if menu == "Home":
     <div class="feature-title">
     ✨ Fitur yang Tersedia
     </div>
-
     <div class="feature-subtitle">
     Berbagai fitur untuk mendukung kegiatan laboratorium dan keselamatan kerja secara digital
     </div>
@@ -505,7 +504,7 @@ with col4:
         <div class="feature-icon">📜</div>
         <div class="feature-header">
             Referensi SNI & ISO
-          </div>
+        </div>
         <div class="feature-desc">
             Kumpulan standar SNI dan ISO untuk mendukung sistem mutu laboratorium.
         </div>
@@ -513,21 +512,19 @@ with col4:
      """, unsafe_allow_html=True)
     
     st.markdown("""
-<div style="
-background:rgba(15,23,42,0.8);
-padding:25px;
-border-radius:20px;
-margin-top:30px;
-text-align:center;
-color:white;
-font-size:20px;
-">
-
-🛡️ Semua fitur dirancang untuk mendukung efisiensi kerja laboratorium serta meningkatkan
-<b style="color:#38bdf8;">keselamatan, kualitas, dan kepatuhan terhadap standar.</b>
-
-</div>
-""", unsafe_allow_html=True)
+    <div style="
+    background:rgba(15,23,42,0.8);
+    padding:25px;
+    border-radius:20px;
+    margin-top:30px;
+    text-align:center;
+    color:white;
+    font-size:20px;
+    ">
+    🛡️ Semua fitur dirancang untuk mendukung efisiensi kerja laboratorium serta meningkatkan
+    <b style="color:#38bdf8;">keselamatan, kualitas, dan kepatuhan terhadap standar.</b>
+    </div>
+    """, unsafe_allow_html=True)
     
 # =========================
 # HALAMAN MSDS
