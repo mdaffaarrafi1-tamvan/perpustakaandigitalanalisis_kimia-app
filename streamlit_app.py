@@ -454,15 +454,15 @@ with st.sidebar:
 
 div[role="option"]{
 
-background: rgba(15,23,42,0.95) !important;
+    background: rgba(15,23,42,0.95) !important;
 
-color: white !important;
+    color: white !important;
 
-transition: all 0.3s ease;
+    transition: all 3s ease;
 
-border-radius: 10px;
+    border-radius: 10px;
 
- margin: 2px 5px;
+    margin: 2px 5px;
 }
 
 /* Saat cursor diarahkan ke item */
