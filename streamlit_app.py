@@ -397,7 +397,6 @@ li{
 
     background-size:300% auto;
 
-    -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 
     animation:auroraText 5s linear infinite;
