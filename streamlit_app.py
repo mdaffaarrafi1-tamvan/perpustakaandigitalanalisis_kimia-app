@@ -384,7 +384,6 @@ p,label{
 
     color:white !important;
 }
-
 li{
 
     color:#ADD8E6 !important;
