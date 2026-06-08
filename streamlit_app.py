@@ -384,9 +384,10 @@ p,label{
 
     color:white !important;
 }
+
 li{
 
-    color:#ADD8E6 !important;
+    color:#ADD8E6!important;
 }
 
 </style>
