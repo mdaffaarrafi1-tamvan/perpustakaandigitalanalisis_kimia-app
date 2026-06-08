@@ -1122,16 +1122,3 @@ Mencatat Volume EDTA
 
 Menghitung Konsentrasi EDTA
 """)
-
-# =========================
-# HALAMAN K3L
-# =========================
-elif menu == "K3L & Limbah":
-
-    st.header("🛡️ K3L & Limbah Laboratorium")
-
-    st.checkbox("☣️ Limbah Logam Berat")
-    st.checkbox("🧪 Limbah Asam Basa")
-    st.checkbox("🔥 Limbah Mudah Terbakar")
-
-    st.warning("Gunakan APD lengkap saat bekerja di laboratorium.")
