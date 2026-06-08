@@ -485,13 +485,12 @@ if menu == "Home":
 
     st.markdown("---")
 
-    st.write("""
+    st.write(""
     📚 Fitur yang tersedia:
-    
     - Database MSDS bahan kimia, SNI, ISO, Kalibrasi Instrumen
     - Download dokumen MSDS, SNI, ISO, Kalibrasi Instrumen
     - Panduan analisis gravimetri dan titrimetri
-    """)
+    "")
 
 # =========================
 # HALAMAN MSDS
