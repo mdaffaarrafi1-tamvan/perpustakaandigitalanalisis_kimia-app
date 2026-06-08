@@ -386,8 +386,7 @@ p,label{
 }
 
 li{
-
-    color:#ADD8E6!important;
+    color:#ADD8E6 !important;
 }
 
 </style>
