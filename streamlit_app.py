@@ -485,7 +485,7 @@ if menu == "Home":
 
     st.markdown("---")
 
-    st.info("""
+    st.write("""
     📚 Fitur yang tersedia:
     
     - Database MSDS bahan kimia, SNI, ISO, Kalibrasi Instrumen
