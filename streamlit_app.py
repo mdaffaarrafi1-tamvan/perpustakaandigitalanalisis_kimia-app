@@ -387,7 +387,7 @@ p,label{
 
 li{
 
-    color:#D9C35C !important;
+    color:#ADD8E6 !important;
 }
 
 </style>
