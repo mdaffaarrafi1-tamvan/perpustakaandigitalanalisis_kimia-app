@@ -109,7 +109,7 @@ database_kalibrasi = {
 # =========================
 st.markdown("""
 <div class="main-title">
-🧪 PERPUSTAKAAN DIGITAL ANALISIS BABI
+🧪 PERPUSTAKAAN DIGITAL ANALISIS KIMIA
 </div>
 
 <div class="sub-title">
